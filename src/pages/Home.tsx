@@ -7,6 +7,7 @@ import LuxuryBusiness from '../components/LuxuryBusiness';
 import About from '../components/About';
 import SocialProof from '../components/SocialProof';
 import ContactForm from '../components/ContactForm';
+import ExperienceTimeline from "../components/ExperienceTimeline";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Coaching />
       <LuxuryBusiness />
       <About />
+      <ExperienceTimeline />
       <SocialProof />
       <ContactForm />
     </motion.div>

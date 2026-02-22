@@ -40,6 +40,30 @@ export default function Hero() {
           transition={{ duration: 0.75, ease: "easeOut" }}
           className="py-8 lg:py-0"
         >
+          {/* HERO SIGNATURE (Logo + Line) */}
+          <div className="mb-7 flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl border border-gold-champagne/20 bg-obsidian/40 backdrop-blur-sm px-3 py-2 shadow-lg shadow-gold-champagne/10">
+                <img
+                  src="/logo-ml-consulting.jpg"
+                  alt="Marie Lindner Consulting"
+                  className="h-8 md:h-9 w-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div className="hidden sm:block leading-tight">
+                <div className="text-pearl font-serif italic text-base md:text-lg">
+                  Marie Lindner
+                </div>
+                <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">
+                  Consulting UG
+                </div>
+              </div>
+            </div>
+            <div className="h-px flex-1 bg-gradient-to-r from-gold-champagne/60 to-transparent" />
+          </div>
+
           {/* Eyebrow */}
           <div className="flex items-center space-x-3 mb-6">
             <div className="h-px w-8 bg-gold-champagne" />
@@ -117,6 +141,22 @@ export default function Hero() {
               <div className="text-gold-champagne text-[11px] tracking-[0.28em] uppercase mb-1">Status</div>
               <div className="text-pearl text-lg font-serif italic">Clear for Takeoff</div>
             </div>
+
+            {/* Logo Seal (subtle, premium) */}
+            <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-obsidian/35 backdrop-blur-sm border border-gold-champagne/20 rounded-xl px-4 py-3">
+              <img
+                src="/logo-ml-consulting.jpg"
+                alt="Marie Lindner Consulting"
+                className="h-9 w-auto object-contain opacity-95"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="hidden xl:block">
+                <div className="text-[10px] uppercase tracking-[0.32em] text-gold-champagne font-bold">
+                  Marie Lindner Consulting UG
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Floating quote card */}
@@ -136,7 +176,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Tablet-only inline image (so it’s not text-only) */}
+        {/* Tablet-only inline image */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,6 +191,20 @@ export default function Hero() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-transparent opacity-85" />
+
+              {/* Mobile Logo Seal on image */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 bg-obsidian/40 backdrop-blur-sm border border-gold-champagne/20 rounded-xl px-4 py-3">
+                <img
+                  src="/logo-ml-consulting.jpg"
+                  alt="Marie Lindner Consulting"
+                  className="h-8 w-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div className="text-[10px] uppercase tracking-[0.28em] text-gold-champagne font-bold">
+                  Consulting UG
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
