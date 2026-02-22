@@ -1,68 +1,61 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Cormorant Garamond", serif;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --color-obsidian: #070707;
+  --color-charcoal: #0F0F10;
+  --color-gold-champagne: #B08D57;
+  --color-gold-soft: #C8A96A;
+  --color-pearl: #F6F6F4;
+  --color-steel: #A7A7A7;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  a:hover {
-    color: #747bff;
+  body {
+    @apply bg-obsidian text-pearl font-sans antialiased selection:bg-gold-champagne selection:text-obsidian;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32;
   }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-gold-champagne text-obsidian font-semibold uppercase tracking-widest text-xs transition-all duration-300 hover:bg-gold-soft hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-gold-champagne/30 text-gold-champagne font-semibold uppercase tracking-widest text-xs transition-all duration-300 hover:bg-gold-champagne/10 hover:border-gold-champagne hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .heading-serif {
+    @apply font-serif italic font-light tracking-tight;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .aviation-line {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-champagne/40 to-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-obsidian;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-champagne/20 hover:bg-gold-champagne/40 transition-colors;
 }
