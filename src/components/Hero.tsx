@@ -1,43 +1,68 @@
-import { motion } from 'motion/react';
-import { ArrowRight, Plane, ShieldCheck, Zap } from 'lucide-react';
+import { motion } from "motion/react";
+import { ArrowRight, Plane, ShieldCheck, Zap } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Motifs */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-gold-champagne/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-gold-champagne/5 rounded-full blur-[120px]" />
-        
-        {/* Runway Lines */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-64 bg-gradient-to-t from-gold-champagne/40 to-transparent" />
-        <div className="absolute bottom-0 left-[48%] -translate-x-1/2 w-px h-48 bg-gradient-to-t from-gold-champagne/20 to-transparent" />
-        <div className="absolute bottom-0 left-[52%] -translate-x-1/2 w-px h-48 bg-gradient-to-t from-gold-champagne/20 to-transparent" />
+    <section id="home" className="relative min-h-screen pt-20 overflow-hidden">
+      {/* Mobile/Tablet Cinematic Background */}
+      <div className="absolute inset-0 z-0 lg:hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/hero-marie.jpg')" }}
+        />
+        {/* Premium overlays */}
+        <div className="absolute inset-0 bg-obsidian/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian" />
+        {/* Subtle gold glow */}
+        <div className="absolute -top-24 -right-24 w-80 h-80 bg-gold-champagne/10 rounded-full blur-[120px]" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-gold-champagne/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="section-container relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      {/* Desktop Background Motifs */}
+      <div className="absolute inset-0 z-0 hidden lg:block">
+        <div className="absolute top-1/4 -right-24 w-[32rem] h-[32rem] bg-gold-champagne/6 rounded-full blur-[140px]" />
+        <div className="absolute bottom-1/4 -left-24 w-[32rem] h-[32rem] bg-gold-champagne/6 rounded-full blur-[140px]" />
+
+        {/* Runway Lines */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-72 bg-gradient-to-t from-gold-champagne/40 to-transparent" />
+        <div className="absolute bottom-0 left-[48%] -translate-x-1/2 w-px h-56 bg-gradient-to-t from-gold-champagne/20 to-transparent" />
+        <div className="absolute bottom-0 left-[52%] -translate-x-1/2 w-px h-56 bg-gradient-to-t from-gold-champagne/20 to-transparent" />
+
+        {/* Horizon line */}
+        <div className="absolute top-28 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-champagne/15 to-transparent" />
+      </div>
+
+      <div className="section-container relative z-10 grid lg:grid-cols-2 gap-14 xl:gap-20 items-center min-h-[calc(100vh-5rem)]">
+        {/* LEFT: Copy */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -26 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className="py-8 lg:py-0"
         >
+          {/* Eyebrow */}
           <div className="flex items-center space-x-3 mb-6">
             <div className="h-px w-8 bg-gold-champagne" />
-            <span className="text-[10px] uppercase tracking-[0.4em] text-gold-champagne font-bold">
-              Aviation Precision • Executive Authority
+            <span className="text-[10px] uppercase tracking-[0.42em] text-gold-champagne font-bold">
+              Aviation Precision • Executive Authority • Luxury Discipline
             </span>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl heading-serif mb-8 leading-[1.1] text-balance">
-            Precision in <span className="text-gold-champagne">Command.</span><br />
-            Clarity in <span className="text-gold-champagne">Strategy.</span>
+
+          {/* Headline */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl heading-serif mb-7 leading-[1.06] text-balance">
+            Lead with <span className="text-gold-champagne">Presence</span>.
+            <br />
+            Execute with <span className="text-gold-champagne">Precision</span>.
           </h1>
 
-          <p className="text-lg md:text-xl text-steel mb-12 max-w-xl leading-relaxed font-light">
-            Merging the high-stakes discipline of a commercial pilot with the strategic foresight of a global business consultant. I help high-performance women and executive teams navigate complexity with absolute presence.
+          {/* Subheadline */}
+          <p className="text-base md:text-xl text-steel/90 mb-10 max-w-xl leading-relaxed font-light">
+            From the cockpit to the boardroom — Marie Lindner helps C-level leaders, founders and premium brands cut
+            through complexity, align strategy, and deliver decisive outcomes with calm authority.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a href="#speaking" className="btn-primary group">
               Book a Keynote
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -47,65 +72,87 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust Markers */}
-          <div className="pt-8 border-t border-gold-champagne/10">
-            <p className="text-[10px] uppercase tracking-widest text-steel/60 mb-6 font-semibold">
+          {/* Trust markers */}
+          <div className="pt-7 border-t border-gold-champagne/12">
+            <p className="text-[10px] uppercase tracking-widest text-steel/60 mb-5 font-semibold">
               Trusted by High-Stakes Leaders
             </p>
-            <div className="flex flex-wrap gap-8 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="flex flex-wrap gap-7 items-center opacity-55 grayscale hover:grayscale-0 transition-all duration-500">
               <div className="flex items-center space-x-2">
                 <ShieldCheck size={20} />
-                <span className="font-serif text-sm">Aviation Elite</span>
+                <span className="font-serif text-sm">High-Reliability Leadership</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Zap size={20} />
-                <span className="font-serif text-sm">Global Strategy</span>
+                <span className="font-serif text-sm">Strategic Execution</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Plane size={20} />
-                <span className="font-serif text-sm">High-Performance</span>
+                <span className="font-serif text-sm">Aviation Discipline</span>
               </div>
             </div>
           </div>
         </motion.div>
 
+        {/* RIGHT: Visual (Desktop) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.965 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
           className="relative hidden lg:block"
         >
-          <div className="aspect-[4/5] relative overflow-hidden rounded-2xl">
+          <div className="aspect-[4/5] relative overflow-hidden rounded-2xl border border-gold-champagne/15">
             <img
-              src="https://picsum.photos/seed/marie-lindner/800/1000"
-              alt="Marie Lindner"
-              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
-              referrerPolicy="no-referrer"
+              src="/hero-marie.jpg"
+              alt="Marie Lindner — Executive Leadership"
+              className="object-cover w-full h-full"
             />
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
-            
-            {/* Decorative Elements */}
-            <div className="absolute top-8 right-8 border border-gold-champagne/30 p-4 backdrop-blur-sm">
-              <div className="text-gold-champagne text-xs tracking-widest uppercase mb-1">Status</div>
+            {/* Premium overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent opacity-80" />
+            {/* Subtle gold vignette */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(176,141,87,0.18),rgba(7,7,7,0)_55%)]" />
+
+            {/* Status badge */}
+            <div className="absolute top-8 right-8 border border-gold-champagne/30 p-4 backdrop-blur-sm bg-obsidian/35">
+              <div className="text-gold-champagne text-[11px] tracking-[0.28em] uppercase mb-1">Status</div>
               <div className="text-pearl text-lg font-serif italic">Clear for Takeoff</div>
             </div>
           </div>
-          
-          {/* Floating Card */}
+
+          {/* Floating quote card */}
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 18, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="absolute -bottom-8 -left-8 bg-charcoal border border-gold-champagne/20 p-8 shadow-2xl max-w-xs"
+            transition={{ delay: 0.55, duration: 0.7, ease: "easeOut" }}
+            className="absolute -bottom-8 -left-8 bg-charcoal/95 border border-gold-champagne/20 p-8 shadow-2xl max-w-sm rounded-xl"
           >
             <div className="text-gold-champagne mb-4">
-              <Plane size={32} strokeWidth={1} />
+              <Plane size={34} strokeWidth={1} />
             </div>
-            <p className="text-sm text-pearl font-light leading-relaxed italic">
-              "In the cockpit, clarity isn't a luxury—it's a survival requirement. I bring that same non-negotiable precision to your boardroom."
+            <p className="text-sm text-pearl/90 font-light leading-relaxed italic">
+              “In aviation, clarity isn’t optional — it’s operational. I bring that same non-negotiable precision to your
+              leadership decisions.”
             </p>
           </motion.div>
+        </motion.div>
+
+        {/* Tablet-only inline image (so it’s not text-only) */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          className="relative lg:hidden mt-6"
+        >
+          <div className="mx-auto max-w-md rounded-2xl overflow-hidden border border-gold-champagne/15 bg-obsidian/30 backdrop-blur-sm">
+            <div className="relative aspect-[4/5]">
+              <img
+                src="/hero-marie.jpg"
+                alt="Marie Lindner — Executive Leadership"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-transparent opacity-85" />
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
