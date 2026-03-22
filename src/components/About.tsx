@@ -1,46 +1,22 @@
 import { motion } from "motion/react";
-import { Globe2, Plane, ShieldCheck } from "lucide-react";
+import { Globe2, Plane, ShieldCheck, BriefcaseBusiness } from "lucide-react";
 
 const highlights = [
-  "Founder & CEO of Marie Lindner Consulting",
-  "Commercial Pilot License (CPL) — Australia",
-  "High-Reliability Leadership & Team Dynamics",
-  "Operational excellence: Flight Ops & airport turnaround",
-  "Luxury brand strategy, execution & client experience discipline",
-  "International background — fluent English & German",
-  "Budgeting, cost control & performance reporting",
-  "Strategic facilitation for C-level leaders & founders",
-];
-
-const altitudeSteps = [
-  {
-    name: "A — AUDIT",
-    desc: "A precise assessment of your current operating model, risks, and decision velocity.",
-  },
-  {
-    name: "L — LINE UP",
-    desc: "Align leadership identity, strategic objectives, and non-negotiable priorities.",
-  },
-  {
-    name: "T — THRUST",
-    desc: "Execute with momentum: clear cadence, accountable ownership, measurable outcomes.",
-  },
-  {
-    name: "I — INSTRUMENT",
-    desc: "Install the systems that keep you on course through complexity and change.",
-  },
-  {
-    name: "T — TERMINATE",
-    desc: "Close the gap between intention and reality — decisions implemented, not discussed.",
-  },
+  "Founder & Managing Director of Marie Lindner Consulting UG",
+  "Entrepreneurial experience through startup build-up, management and leadership responsibility",
+  "Commercial Pilot License (CPL) and aviation training in Australia",
+  "Leadership, communication and decision-making under pressure",
+  "Professional coaching training with leadership focus",
+  "International background with English and German fluency",
+  "Strong network across entrepreneurs, executives and business communities",
+  "Structured, high-trust work with leaders in transition and responsibility-heavy roles",
 ];
 
 export default function About() {
   return (
-    <section id="about" className="bg-charcoal py-24 md:py-32 relative overflow-hidden">
-      {/* Decorative flight path (subtle) */}
+    <section id="about" className="bg-obsidian py-24 md:py-32 relative overflow-hidden">
       <svg
-        className="absolute top-0 left-0 w-full h-full opacity-[0.06] pointer-events-none"
+        className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none"
         viewBox="0 0 1200 1200"
         aria-hidden="true"
       >
@@ -54,8 +30,7 @@ export default function About() {
       </svg>
 
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-14 xl:gap-20 items-start">
-          {/* LEFT: Copy + Image */}
+        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 xl:gap-20 items-start">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,41 +42,37 @@ export default function About() {
             </span>
 
             <h2 className="text-4xl md:text-5xl heading-serif mb-7 leading-tight text-balance">
-              Where <span className="text-gold-champagne">precision</span> meets{" "}
-              <span className="text-gold-champagne">presence</span>.
+              Entrepreneurial experience.
+              <br />
+              <span className="text-gold-champagne">Human clarity.</span>
             </h2>
 
             <div className="space-y-6 text-steel/90 font-light leading-relaxed text-base md:text-lg max-w-2xl">
               <p>
-                Marie Lindner is an executive strategist and facilitator with a commercial aviation background. She works
-                with leaders who operate in high-stakes environments — where clarity, discipline and decision quality are
-                non-negotiable.
+                Marie Lindner combines practical entrepreneurial experience with leadership responsibility, structured
+                coaching work and an aviation background that shaped her standards early on.
               </p>
               <p>
-                Her experience spans operational leadership (flight ops and airport turnaround), strategic execution, and
-                premium brand discipline. The result is a rare blend: calm authority under pressure — and structured
-                delivery when it matters most.
+                As part of building and helping lead a startup, she gained hands-on experience in management,
+                organization, strategic thinking, execution and communication. That work created a deep understanding
+                of how leaders actually operate under pressure — and where they often need clarity most.
               </p>
               <p>
-                Based in Germany and trained in Australia, Marie brings an international perspective to leadership,
-                communication and performance — designed for C-level, founders, and premium organizations.
+                Today, she supports entrepreneurs, executives and ambitious individuals who want stronger decision
+                quality, greater self-leadership, clearer communication and more grounded effectiveness.
               </p>
             </div>
 
-            {/* Image card */}
             <div className="mt-10">
-              <div className="relative overflow-hidden rounded-2xl border border-gold-champagne/15 bg-obsidian/40">
+              <div className="relative overflow-hidden rounded-[2rem] border border-gold-champagne/15 bg-charcoal/40">
                 <img
-                  src="/about-marie.jpg"
-                  alt="Marie Lindner — executive portrait"
-                  className="w-full h-[420px] md:h-[520px] object-cover"
+                  src="/images/about-marie.webp"
+                  alt="Marie Lindner portrait"
+                  className="w-full h-[520px] object-cover"
+                  loading="lazy"
                 />
-                {/* overlay for premium feel */}
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent" />
-                {/* subtle gold vignette */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(176,141,87,0.18),rgba(7,7,7,0)_55%)]" />
 
-                {/* micro-badge */}
                 <div className="absolute bottom-5 left-5 right-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 backdrop-blur-sm px-4 py-3">
                     <Plane size={18} className="text-gold-champagne" />
@@ -109,28 +80,27 @@ export default function About() {
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 backdrop-blur-sm px-4 py-3">
                     <Globe2 size={18} className="text-gold-champagne" />
-                    <span className="text-pearl text-sm font-medium">International Executive Work</span>
+                    <span className="text-pearl text-sm font-medium">International Perspective</span>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT: Highlights + Framework */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-            className="bg-obsidian/95 p-8 md:p-12 border border-gold-champagne/20 rounded-2xl relative overflow-hidden"
+            className="bg-charcoal/95 p-8 md:p-12 border border-gold-champagne/20 rounded-[2rem] relative overflow-hidden"
           >
-            {/* subtle runway line */}
             <div className="absolute -top-24 -right-24 w-72 h-72 bg-gold-champagne/10 rounded-full blur-[120px]" />
             <div className="absolute -bottom-28 -left-28 w-72 h-72 bg-gold-champagne/10 rounded-full blur-[120px]" />
 
-            <h3 className="text-2xl font-serif italic text-pearl mb-8">
-              Professional Highlights
-            </h3>
+            <div className="flex items-center gap-3 mb-8">
+              <BriefcaseBusiness size={20} className="text-gold-champagne" />
+              <h3 className="text-2xl font-serif italic text-pearl">Professional Highlights</h3>
+            </div>
 
             <ul className="space-y-4 mb-12">
               {highlights.map((item, index) => (
@@ -139,43 +109,31 @@ export default function About() {
                     size={18}
                     className="text-gold-champagne mt-1 shrink-0 group-hover:scale-110 transition-transform"
                   />
-                  <span className="text-sm md:text-[15px] text-steel/90 font-medium leading-relaxed">
-                    {item}
-                  </span>
+                  <span className="text-sm md:text-[15px] text-steel/90 font-medium leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-8 border-t border-gold-champagne/12">
-              <div className="flex items-center justify-between gap-6 mb-6">
-                <h4 className="text-[10px] uppercase tracking-[0.42em] text-gold-champagne font-bold">
-                  The ALTITUDE Framework™
-                </h4>
-                <div className="h-px flex-1 bg-gradient-to-r from-gold-champagne/30 to-transparent" />
+            <div className="pt-8 border-t border-gold-champagne/12 space-y-5">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-2">
+                  Coaching Foundation
+                </div>
+                <p className="text-sm md:text-[15px] text-steel/90 leading-relaxed font-light">
+                  Marie’s work is informed by leadership-focused coaching training, communication psychology, personal
+                  development and resilience-oriented methods — always combined with real-world business perspective.
+                </p>
               </div>
 
-              <div className="space-y-6">
-                {altitudeSteps.map((step, index) => (
-                  <div
-                    key={index}
-                    className="relative pl-8 border-l border-gold-champagne/20"
-                  >
-                    <div className="absolute left-[-5px] top-1 w-2 h-2 bg-gold-champagne rounded-full" />
-                    <div className="text-xs md:text-sm font-serif italic text-pearl mb-1">
-                      {step.name}
-                    </div>
-                    <p className="text-[11px] md:text-[12px] text-steel/85 leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
-                ))}
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-2">
+                  Why clients work with her
+                </div>
+                <p className="text-sm md:text-[15px] text-steel/90 leading-relaxed font-light">
+                  Because the combination is unusual: professional credibility, calm authority, entrepreneurial
+                  understanding and a way of working that is both structured and deeply human.
+                </p>
               </div>
-
-              {/* small closing statement */}
-              <p className="mt-8 text-sm text-pearl/80 font-light leading-relaxed">
-                Built for leaders who value calm execution, disciplined decisions, and premium standards — even under
-                pressure.
-              </p>
             </div>
           </motion.div>
         </div>

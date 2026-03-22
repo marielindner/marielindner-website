@@ -5,10 +5,11 @@ import { Menu, X, ChevronRight } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
+  { name: "Coaching & Mentoring", href: "#coaching" },
+  { name: "Consulting", href: "#consulting" },
   { name: "Speaking", href: "#speaking" },
-  { name: "Executive Coaching", href: "#coaching" },
-  { name: "Luxury Business", href: "#luxury" },
   { name: "About", href: "#about" },
+  { name: "References", href: "#references" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -19,7 +20,7 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,7 +29,6 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setIsOpen(false);
 
-    // Smooth-scroll only works on Home where sections exist
     if (isHome && href.startsWith("#")) {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -37,6 +37,7 @@ export default function Navbar() {
 
   const handleLogoClick = () => {
     setIsOpen(false);
+
     if (isHome) {
       const el = document.querySelector("#home");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -50,16 +51,14 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-obsidian/90 backdrop-blur-md py-3 md:py-4 border-b border-gold-champagne/10"
+          ? "bg-obsidian/88 backdrop-blur-md py-3 md:py-4 border-b border-gold-champagne/10"
           : "bg-transparent py-5 md:py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Brand */}
         <Link
           to="/"
           onClick={(e) => {
-            // Keep SPA route behavior, but make scrolling feel premium
             if (isHome) {
               e.preventDefault();
               handleLogoClick();
@@ -69,14 +68,13 @@ export default function Navbar() {
           aria-label="Marie Lindner Consulting"
         >
           <img
-            src="/logo-ml-consulting.jpg"
+            src="/images/logo-ml-consulting.webp"
             alt="Marie Lindner Consulting"
             className="h-10 md:h-11 w-auto object-contain"
             loading="eager"
             decoding="async"
           />
 
-          {/* Wordmark (desktop/tablet) */}
           <div className="hidden sm:block leading-tight">
             <div className="text-pearl font-serif italic text-base md:text-lg group-hover:text-gold-champagne transition-colors">
               Marie Lindner
@@ -87,8 +85,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden xl:flex items-center space-x-7">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -99,7 +96,7 @@ export default function Navbar() {
                   handleNavClick(link.href);
                 }
               }}
-              className="text-xs uppercase tracking-widest text-steel hover:text-gold-champagne transition-colors"
+              className="text-[11px] uppercase tracking-[0.22em] text-steel hover:text-gold-champagne transition-colors"
             >
               {link.name}
             </a>
@@ -113,15 +110,14 @@ export default function Navbar() {
                 handleNavClick("#contact");
               }
             }}
-            className="btn-primary py-2.5 px-6 text-[10px]"
+            className="btn-primary py-3 px-6 text-[10px]"
           >
-            Book Marie
+            Book Intro Call
           </a>
         </div>
 
-        {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-pearl p-2"
+          className="xl:hidden text-pearl p-2"
           onClick={() => setIsOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={isOpen}
@@ -130,15 +126,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
+            initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
+            exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-[78px] md:top-[84px] bg-obsidian z-40 lg:hidden flex flex-col p-8 space-y-6"
+            className="fixed inset-0 top-[78px] md:top-[84px] bg-obsidian z-40 xl:hidden flex flex-col p-8 space-y-6"
           >
             {navLinks.map((link) => (
               <a
@@ -172,7 +167,7 @@ export default function Navbar() {
                 }}
                 className="btn-primary w-full"
               >
-                Book Marie
+                Book Intro Call
               </a>
             </div>
           </motion.div>
