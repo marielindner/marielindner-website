@@ -1,43 +1,48 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram, MessageSquare, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, MessageSquare, Phone } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
-    <footer className="bg-obsidian border-t border-gold-champagne/10 py-16">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+    <footer className="border-t border-gold-champagne/10 bg-obsidian py-16">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="mb-16 grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Link to="/" className="group flex flex-col mb-6" onClick={() => window.scrollTo(0, 0)}>
-              <span className="text-3xl font-serif tracking-tighter text-pearl group-hover:text-gold-champagne transition-colors">
+            <Link to="/" className="group mb-6 flex flex-col" onClick={() => window.scrollTo(0, 0)}>
+              <span className="text-3xl tracking-tighter text-pearl transition-colors group-hover:text-gold-champagne font-serif">
                 ML<span className="text-gold-champagne">.</span>
               </span>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-steel font-medium -mt-1">
+              <span className="-mt-1 text-[10px] font-medium uppercase tracking-[0.3em] text-steel">
                 Consulting UG
               </span>
             </Link>
 
-            <p className="text-xs text-steel leading-relaxed font-light">
-              Coaching, mentoring, speaking and selected project-based international consulting.
-            </p>
+            <p className="text-xs font-light leading-relaxed text-steel">{t.footer.tagline}</p>
           </div>
 
           <div>
-            <h4 className="text-[10px] uppercase tracking-[0.3em] text-gold-champagne font-bold mb-6">Navigation</h4>
+            <h4 className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-gold-champagne">
+              {t.footer.navigation}
+            </h4>
             <ul className="space-y-4">
-              <li><a href="#home" className="text-xs text-steel hover:text-pearl transition-colors">Home</a></li>
-              <li><a href="#coaching" className="text-xs text-steel hover:text-pearl transition-colors">Coaching & Mentoring</a></li>
-              <li><a href="#consulting" className="text-xs text-steel hover:text-pearl transition-colors">Consulting</a></li>
-              <li><a href="#speaking" className="text-xs text-steel hover:text-pearl transition-colors">Speaking</a></li>
-              <li><a href="#references" className="text-xs text-steel hover:text-pearl transition-colors">References</a></li>
-              <li><a href="#contact" className="text-xs text-steel hover:text-pearl transition-colors">Contact</a></li>
+              {t.nav.links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-xs text-steel transition-colors hover:text-pearl">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-[10px] uppercase tracking-[0.3em] text-gold-champagne font-bold mb-6">Company</h4>
-            <div className="space-y-4 text-xs text-steel font-light leading-relaxed">
+            <h4 className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-gold-champagne">
+              {t.footer.company}
+            </h4>
+            <div className="space-y-4 text-xs font-light leading-relaxed text-steel">
               <p>
                 Marie Lindner Consulting UG (haftungsbeschränkt)
                 <br />
@@ -52,12 +57,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[10px] uppercase tracking-[0.3em] text-gold-champagne font-bold mb-6">Connect</h4>
+            <h4 className="mb-6 text-[10px] font-bold uppercase tracking-[0.3em] text-gold-champagne">
+              {t.footer.connect}
+            </h4>
 
-            <div className="space-y-4 mb-6">
+            <div className="mb-6 space-y-4">
               <a
                 href="mailto:marielindnerconsulting@gmail.com"
-                className="flex items-center gap-3 text-xs text-steel hover:text-pearl transition-colors"
+                className="flex items-center gap-3 text-xs text-steel transition-colors hover:text-pearl"
               >
                 <Mail size={14} className="text-gold-champagne" />
                 <span>marielindnerconsulting@gmail.com</span>
@@ -65,7 +72,7 @@ export default function Footer() {
 
               <a
                 href="tel:+491723933412"
-                className="flex items-center gap-3 text-xs text-steel hover:text-pearl transition-colors"
+                className="flex items-center gap-3 text-xs text-steel transition-colors hover:text-pearl"
               >
                 <Phone size={14} className="text-gold-champagne" />
                 <span>+49 172 3933412</span>
@@ -77,7 +84,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/marie-lindner-11247a12b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 border border-gold-champagne/20 text-gold-champagne hover:bg-gold-champagne hover:text-obsidian transition-all duration-300"
+                className="border border-gold-champagne/20 p-2 text-gold-champagne transition-all duration-300 hover:bg-gold-champagne hover:text-obsidian"
               >
                 <Linkedin size={18} />
               </a>
@@ -85,7 +92,7 @@ export default function Footer() {
                 href="https://wa.me/491723933412"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 border border-gold-champagne/20 text-gold-champagne hover:bg-gold-champagne hover:text-obsidian transition-all duration-300"
+                className="border border-gold-champagne/20 p-2 text-gold-champagne transition-all duration-300 hover:bg-gold-champagne hover:text-obsidian"
               >
                 <MessageSquare size={18} />
               </a>
@@ -93,7 +100,7 @@ export default function Footer() {
                 href="https://www.instagram.com/marielindnerconsulting"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 border border-gold-champagne/20 text-gold-champagne hover:bg-gold-champagne hover:text-obsidian transition-all duration-300"
+                className="border border-gold-champagne/20 p-2 text-gold-champagne transition-all duration-300 hover:bg-gold-champagne hover:text-obsidian"
               >
                 <Instagram size={18} />
               </a>
@@ -101,16 +108,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gold-champagne/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-gold-champagne/5 pt-8 md:flex-row">
           <p className="text-[10px] uppercase tracking-widest text-steel/60">
-            © {currentYear} Marie Lindner Consulting UG. All Rights Reserved.
+            {t.footer.rights.replace("{year}", String(currentYear))}
           </p>
 
           <div className="flex items-center space-x-2">
-            <div className="w-1 h-1 bg-gold-champagne rounded-full" />
-            <span className="text-[8px] uppercase tracking-[0.4em] text-steel/40">
-              Clarity • Presence • Discipline
-            </span>
+            <div className="h-1 w-1 rounded-full bg-gold-champagne" />
+            <span className="text-[8px] uppercase tracking-[0.4em] text-steel/40">{t.footer.values}</span>
           </div>
         </div>
       </div>

@@ -1,23 +1,41 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { ChevronRight, Menu, X } from "lucide-react";
+import { useLanguage, type Language } from "../i18n";
 
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Coaching & Mentoring", href: "#coaching" },
-  { name: "Consulting", href: "#consulting" },
-  { name: "Speaking", href: "#speaking" },
-  { name: "About", href: "#about" },
-  { name: "References", href: "#references" },
-  { name: "Contact", href: "#contact" },
-];
+function LanguageToggle({ mobile = false }: { mobile?: boolean }) {
+  const { language, setLanguage, t } = useLanguage();
+
+  const baseClass = mobile
+    ? "language-toggle w-full justify-center"
+    : "language-toggle hidden md:inline-flex";
+
+  const getButtonClass = (value: Language) =>
+    `language-toggle-button ${
+      language === value
+        ? "bg-gold-champagne text-obsidian shadow-lg"
+        : "text-steel hover:text-pearl"
+    }`;
+
+  return (
+    <div className={baseClass} aria-label={t.nav.languageLabel}>
+      <button type="button" onClick={() => setLanguage("de")} className={getButtonClass("de")}>
+        DE
+      </button>
+      <button type="button" onClick={() => setLanguage("en")} className={getButtonClass("en")}>
+        EN
+      </button>
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -49,13 +67,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? "bg-obsidian/88 backdrop-blur-md py-3 md:py-4 border-b border-gold-champagne/10"
+          ? "border-b border-gold-champagne/10 bg-obsidian/88 py-3 md:py-4 backdrop-blur-md"
           : "bg-transparent py-5 md:py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
         <Link
           to="/"
           onClick={(e) => {
@@ -65,110 +83,80 @@ export default function Navbar() {
             }
           }}
           className="group flex items-center gap-3"
-          aria-label="Marie Lindner Consulting"
+          aria-label={t.nav.brandAriaLabel}
         >
           <img
             src="/images/logo-ml-consulting.webp"
             alt="Marie Lindner Consulting"
-            className="h-10 md:h-11 w-auto object-contain"
+            className="h-10 w-auto object-contain md:h-11"
             loading="eager"
             decoding="async"
           />
 
-          <div className="hidden sm:block leading-tight">
-            <div className="text-pearl font-serif italic text-base md:text-lg group-hover:text-gold-champagne transition-colors">
+          <div className="hidden leading-tight sm:block">
+            <div className="text-base font-serif italic text-pearl transition-colors group-hover:text-gold-champagne md:text-lg">
               Marie Lindner
             </div>
-            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">
-              Consulting UG
-            </div>
+            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Consulting UG</div>
           </div>
         </Link>
 
-        <div className="hidden xl:flex items-center space-x-7">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => {
-                if (isHome) {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }
-              }}
-              className="text-[11px] uppercase tracking-[0.22em] text-steel hover:text-gold-champagne transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+        <div className="hidden items-center gap-8 lg:flex">
+          <div className="flex items-center gap-7">
+            {t.nav.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-[11px] font-semibold uppercase tracking-[0.2em] text-steel transition-colors hover:text-pearl"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
 
-          <a
-            href="#contact"
-            onClick={(e) => {
-              if (isHome) {
-                e.preventDefault();
-                handleNavClick("#contact");
-              }
-            }}
-            className="btn-primary py-3 px-6 text-[10px]"
-          >
-            Book Intro Call
-          </a>
+          <LanguageToggle />
         </div>
 
-        <button
-          className="xl:hidden text-pearl p-2"
-          onClick={() => setIsOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <LanguageToggle />
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full border border-gold-champagne/15 bg-obsidian/55 p-3 text-pearl backdrop-blur-sm transition-colors hover:text-gold-champagne"
+            aria-label={t.nav.menuLabel}
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -14 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-[78px] md:top-[84px] bg-obsidian z-40 xl:hidden flex flex-col p-8 space-y-6"
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25 }}
+            className="border-t border-gold-champagne/10 bg-obsidian/96 px-6 pb-8 pt-6 backdrop-blur-xl lg:hidden"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  if (isHome) {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  } else {
-                    setIsOpen(false);
-                  }
-                }}
-                className="text-2xl font-serif text-pearl flex justify-between items-center border-b border-gold-champagne/10 pb-4"
-              >
-                {link.name}
-                <ChevronRight size={20} className="text-gold-champagne" />
-              </a>
-            ))}
+            <div className="mx-auto flex max-w-7xl flex-col gap-6">
+              <LanguageToggle mobile />
 
-            <div className="pt-8">
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  if (isHome) {
-                    e.preventDefault();
-                    handleNavClick("#contact");
-                  } else {
-                    setIsOpen(false);
-                  }
-                }}
-                className="btn-primary w-full"
-              >
-                Book Intro Call
-              </a>
+              <div className="grid gap-2">
+                {t.nav.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className="group flex items-center justify-between rounded-2xl border border-gold-champagne/10 bg-charcoal/40 px-5 py-4 text-sm text-pearl transition-colors hover:border-gold-champagne/25 hover:text-gold-champagne"
+                  >
+                    <span className="uppercase tracking-[0.18em]">{link.name}</span>
+                    <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

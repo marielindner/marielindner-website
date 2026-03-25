@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -60,9 +60,16 @@
   .input-field {
     @apply w-full rounded-2xl border border-gold-champagne/15 bg-charcoal/60 px-5 py-4 text-sm text-pearl placeholder:text-steel/55 outline-none transition-all duration-300 focus:border-gold-champagne/45 focus:bg-charcoal;
   }
+
+  .language-toggle {
+    @apply inline-flex items-center rounded-full border border-gold-champagne/15 bg-obsidian/55 p-1 backdrop-blur-sm;
+  }
+
+  .language-toggle-button {
+    @apply rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] transition-all duration-300;
+  }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }

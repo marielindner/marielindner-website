@@ -1,22 +1,14 @@
 import { motion } from "motion/react";
-import { Globe2, Plane, ShieldCheck, BriefcaseBusiness } from "lucide-react";
-
-const highlights = [
-  "Founder & Managing Director of Marie Lindner Consulting UG",
-  "Entrepreneurial experience through startup build-up, management and leadership responsibility",
-  "Commercial Pilot License (CPL) and aviation training in Australia",
-  "Leadership, communication and decision-making under pressure",
-  "Professional coaching training with leadership focus",
-  "International background with English and German fluency",
-  "Strong network across entrepreneurs, executives and business communities",
-  "Structured, high-trust work with leaders in transition and responsibility-heavy roles",
-];
+import { BriefcaseBusiness, Globe2, Plane, ShieldCheck } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
-    <section id="about" className="bg-obsidian py-24 md:py-32 relative overflow-hidden">
+    <section id="about" className="relative overflow-hidden bg-obsidian py-24 md:py-32">
       <svg
-        className="absolute top-0 left-0 w-full h-full opacity-[0.05] pointer-events-none"
+        className="pointer-events-none absolute left-0 top-0 h-full w-full opacity-[0.05]"
         viewBox="0 0 1200 1200"
         aria-hidden="true"
       >
@@ -30,37 +22,27 @@ export default function About() {
       </svg>
 
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 xl:gap-20 items-start">
+        <div className="grid items-start gap-14 lg:grid-cols-[0.95fr_1.05fr] xl:gap-20">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-4 block">
-              About Marie Lindner
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+              {t.about.eyebrow}
             </span>
 
-            <h2 className="text-4xl md:text-5xl heading-serif mb-7 leading-tight text-balance">
-              Entrepreneurial experience.
+            <h2 className="heading-serif mb-7 text-4xl leading-tight text-balance md:text-5xl">
+              {t.about.titleLine1}
               <br />
-              <span className="text-gold-champagne">Human clarity.</span>
+              <span className="text-gold-champagne">{t.about.titleHighlight}</span>
             </h2>
 
-            <div className="space-y-6 text-steel/90 font-light leading-relaxed text-base md:text-lg max-w-2xl">
-              <p>
-                Marie Lindner combines practical entrepreneurial experience with leadership responsibility, structured
-                coaching work and an aviation background that shaped her standards early on.
-              </p>
-              <p>
-                As part of building and helping lead a startup, she gained hands-on experience in management,
-                organization, strategic thinking, execution and communication. That work created a deep understanding
-                of how leaders actually operate under pressure — and where they often need clarity most.
-              </p>
-              <p>
-                Today, she supports entrepreneurs, executives and ambitious individuals who want stronger decision
-                quality, greater self-leadership, clearer communication and more grounded effectiveness.
-              </p>
+            <div className="max-w-2xl space-y-6 text-base font-light leading-relaxed text-steel/90 md:text-lg">
+              {t.about.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="mt-10">
@@ -68,19 +50,19 @@ export default function About() {
                 <img
                   src="/images/about-marie.webp"
                   alt="Marie Lindner portrait"
-                  className="w-full h-[520px] object-cover"
+                  className="h-[520px] w-full object-cover"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent" />
 
-                <div className="absolute bottom-5 left-5 right-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 backdrop-blur-sm px-4 py-3">
+                <div className="absolute bottom-5 left-5 right-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 px-4 py-3 backdrop-blur-sm">
                     <Plane size={18} className="text-gold-champagne" />
-                    <span className="text-pearl text-sm font-medium">Commercial Pilot License (CPL)</span>
+                    <span className="text-sm font-medium text-pearl">{t.about.pilotLabel}</span>
                   </div>
-                  <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 backdrop-blur-sm px-4 py-3">
+                  <div className="inline-flex items-center gap-2 rounded-xl border border-gold-champagne/20 bg-obsidian/50 px-4 py-3 backdrop-blur-sm">
                     <Globe2 size={18} className="text-gold-champagne" />
-                    <span className="text-pearl text-sm font-medium">International Perspective</span>
+                    <span className="text-sm font-medium text-pearl">{t.about.perspectiveLabel}</span>
                   </div>
                 </div>
               </div>
@@ -92,47 +74,43 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-            className="bg-charcoal/95 p-8 md:p-12 border border-gold-champagne/20 rounded-[2rem] relative overflow-hidden"
+            className="relative overflow-hidden rounded-[2rem] border border-gold-champagne/20 bg-charcoal/95 p-8 md:p-12"
           >
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-gold-champagne/10 rounded-full blur-[120px]" />
-            <div className="absolute -bottom-28 -left-28 w-72 h-72 bg-gold-champagne/10 rounded-full blur-[120px]" />
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gold-champagne/10 blur-[120px]" />
+            <div className="absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-gold-champagne/10 blur-[120px]" />
 
-            <div className="flex items-center gap-3 mb-8">
+            <div className="mb-8 flex items-center gap-3">
               <BriefcaseBusiness size={20} className="text-gold-champagne" />
-              <h3 className="text-2xl font-serif italic text-pearl">Professional Highlights</h3>
+              <h3 className="text-2xl font-serif italic text-pearl">{t.about.highlightsTitle}</h3>
             </div>
 
-            <ul className="space-y-4 mb-12">
-              {highlights.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 group">
+            <ul className="mb-12 space-y-4">
+              {t.about.highlights.map((item) => (
+                <li key={item} className="group flex items-start gap-3">
                   <ShieldCheck
                     size={18}
-                    className="text-gold-champagne mt-1 shrink-0 group-hover:scale-110 transition-transform"
+                    className="mt-1 shrink-0 text-gold-champagne transition-transform group-hover:scale-110"
                   />
-                  <span className="text-sm md:text-[15px] text-steel/90 font-medium leading-relaxed">{item}</span>
+                  <span className="text-sm font-medium leading-relaxed text-steel/90 md:text-[15px]">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-8 border-t border-gold-champagne/12 space-y-5">
+            <div className="space-y-5 border-t border-gold-champagne/12 pt-8">
               <div>
-                <div className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-2">
-                  Coaching Foundation
+                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+                  {t.about.foundationTitle}
                 </div>
-                <p className="text-sm md:text-[15px] text-steel/90 leading-relaxed font-light">
-                  Marie’s work is informed by leadership-focused coaching training, communication psychology, personal
-                  development and resilience-oriented methods — always combined with real-world business perspective.
+                <p className="text-sm font-light leading-relaxed text-steel/90 md:text-[15px]">
+                  {t.about.foundationText}
                 </p>
               </div>
 
               <div>
-                <div className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-2">
-                  Why clients work with her
+                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+                  {t.about.whyTitle}
                 </div>
-                <p className="text-sm md:text-[15px] text-steel/90 leading-relaxed font-light">
-                  Because the combination is unusual: professional credibility, calm authority, entrepreneurial
-                  understanding and a way of working that is both structured and deeply human.
-                </p>
+                <p className="text-sm font-light leading-relaxed text-steel/90 md:text-[15px]">{t.about.whyText}</p>
               </div>
             </div>
           </motion.div>

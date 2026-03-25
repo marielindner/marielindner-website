@@ -1,99 +1,68 @@
 import { motion } from "motion/react";
-import { Compass, Shield, Plane } from "lucide-react";
+import { Compass, ShieldCheck, Sparkles } from "lucide-react";
+import { useLanguage } from "../i18n";
 
-const pillars = [
-  {
-    icon: Compass,
-    title: "Clarity in complexity",
-    description:
-      "Marie works with leaders who need more than motivation. Her strength is helping people structure complexity, think clearly and move decisively.",
-  },
-  {
-    icon: Shield,
-    title: "Calm under pressure",
-    description:
-      "From operational leadership to entrepreneurial responsibility, her work is grounded in composure, responsibility and well-judged action.",
-  },
-  {
-    icon: Plane,
-    title: "Aviation-grade discipline",
-    description:
-      "Commercial pilot training in Australia shaped her standards: preparation, situational awareness, discipline and accountability.",
-  },
-];
+const icons = [Compass, Sparkles, ShieldCheck];
 
 export default function Differentiator() {
+  const { t } = useLanguage();
+
   return (
-    <section className="bg-charcoal relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-champagne/20 to-transparent" />
+    <section className="relative bg-charcoal py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-gold-champagne/8 blur-[120px]" />
+        <div className="absolute -right-24 bottom-16 h-72 w-72 rounded-full bg-gold-champagne/8 blur-[120px]" />
+      </div>
 
-      <div className="section-container">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 xl:gap-20 items-start">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65 }}
-            >
-              <span className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-4 block">
-                The Differentiator
-              </span>
+      <div className="section-container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mx-auto mb-16 max-w-3xl text-center"
+        >
+          <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+            {t.differentiator.eyebrow}
+          </span>
+          <h2 className="heading-serif mb-7 text-4xl leading-tight text-balance md:text-6xl">
+            {t.differentiator.title} <span className="text-gold-champagne">{t.differentiator.titleHighlight}</span>
+          </h2>
+          <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-steel/90 md:text-lg">
+            {t.differentiator.intro}
+          </p>
+        </motion.div>
 
-              <h2 className="text-4xl md:text-5xl heading-serif mb-8 leading-tight">
-                From the cockpit
-                <br />
-                to the <span className="text-gold-champagne">executive table.</span>
-              </h2>
-
-              <p className="text-steel font-light leading-relaxed mb-8 text-base md:text-lg">
-                Marie Lindner combines entrepreneurial experience, leadership responsibility, coaching expertise and a
-                commercial aviation background. That combination is rare — and it shapes how she supports clients:
-                clear, thoughtful, composed and practical.
-              </p>
-
-              <div className="aviation-line mb-8" />
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div className="rounded-2xl overflow-hidden border border-gold-champagne/12">
-                  <img
-                    src="/images/cockpit-marie.webp"
-                    alt="Marie Lindner in cockpit"
-                    className="w-full h-64 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden border border-gold-champagne/12">
-                  <img
-                    src="/images/flugzeug-marie.webp"
-                    alt="Marie Lindner standing on aircraft"
-                    className="w-full h-64 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-3 lg:grid-cols-1 gap-6">
-            {pillars.map((item, index) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {t.differentiator.pillars.map((pillar, index) => {
+            const Icon = icons[index];
+            return (
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={pillar.title}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="p-8 rounded-2xl border border-gold-champagne/12 bg-obsidian/55"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                className="rounded-[1.75rem] border border-gold-champagne/12 bg-obsidian/55 p-8"
               >
-                <div className="mb-6 text-gold-champagne">
-                  <item.icon size={30} strokeWidth={1.2} />
+                <div className="mb-5 text-gold-champagne">
+                  <Icon size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-serif italic mb-4 text-pearl">{item.title}</h3>
-                <p className="text-sm md:text-[15px] text-steel font-light leading-relaxed">{item.description}</p>
+                <h3 className="mb-3 text-2xl font-serif italic text-pearl">{pillar.title}</h3>
+                <p className="text-sm leading-relaxed text-steel/90 md:text-[15px]">{pillar.text}</p>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.18 }}
+          className="mx-auto mt-10 max-w-4xl rounded-[1.75rem] border border-gold-champagne/12 bg-obsidian/40 p-8 text-center"
+        >
+          <p className="text-base font-light leading-relaxed text-pearl/90 md:text-lg">{t.differentiator.closing}</p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Send, Loader2, Linkedin, Instagram, MessageSquare, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Loader2, Mail, MessageSquare, Phone, Send } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 const TO_EMAIL = "marielindnerconsulting@gmail.com";
 
 export default function ContactForm() {
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
-    interest: "Coaching & Mentoring",
+    interest: t.contact.options.coaching,
     message: "",
   });
+
+  React.useEffect(() => {
+    setFormData((prev) => ({ ...prev, interest: t.contact.options.coaching }));
+  }, [language, t.contact.options.coaching]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -30,20 +36,20 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
 
-    const subject = `Inquiry — ${formData.interest} | ${formData.name}`;
+    const subject = `${t.contact.mailSubjectPrefix} — ${formData.interest} | ${formData.name}`;
 
     const body = `
-Full Name: ${formData.name}
-Email: ${formData.email}
-Company / Organization: ${formData.company || "-"}
+${t.contact.mailBody.fullName}: ${formData.name}
+${t.contact.mailBody.email}: ${formData.email}
+${t.contact.mailBody.company}: ${formData.company || "-"}
 
-Primary Interest: ${formData.interest}
+${t.contact.mailBody.primaryInterest}: ${formData.interest}
 
-Message:
+${t.contact.mailBody.message}:
 ${formData.message}
 
 ---
-Sent via marielindner.de
+${t.contact.mailBody.sentVia}
     `;
 
     const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -57,31 +63,24 @@ Sent via marielindner.de
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative bg-charcoal">
+    <section id="contact" className="relative bg-charcoal py-24 md:py-32">
       <div className="section-container">
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-4 block">
-              Contact & Inquiries
+        <div className="grid items-start gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+              {t.contact.eyebrow}
             </span>
 
-            <h2 className="text-4xl md:text-6xl heading-serif mb-8 text-balance">
-              Start the <span className="text-gold-champagne italic">conversation.</span>
+            <h2 className="heading-serif mb-8 text-4xl text-balance md:text-6xl">
+              {t.contact.title} <span className="text-gold-champagne">{t.contact.titleHighlight}</span>
             </h2>
 
-            <p className="text-steel font-light leading-relaxed mb-10 text-lg max-w-xl">
-              For coaching, mentoring, speaking and selected consulting inquiries. Marie personally reviews strategic
-              requests.
-            </p>
+            <p className="mb-10 max-w-xl text-lg font-light leading-relaxed text-steel">{t.contact.intro}</p>
 
-            <div className="space-y-4 mb-10">
+            <div className="mb-10 space-y-4">
               <a
                 href="mailto:marielindnerconsulting@gmail.com"
-                className="flex items-center gap-3 text-pearl hover:text-gold-champagne transition-colors"
+                className="flex items-center gap-3 text-pearl transition-colors hover:text-gold-champagne"
               >
                 <Mail size={18} className="text-gold-champagne" />
                 <span className="text-sm">marielindnerconsulting@gmail.com</span>
@@ -89,57 +88,37 @@ Sent via marielindner.de
 
               <a
                 href="tel:+491723933412"
-                className="flex items-center gap-3 text-pearl hover:text-gold-champagne transition-colors"
+                className="flex items-center gap-3 text-pearl transition-colors hover:text-gold-champagne"
               >
                 <Phone size={18} className="text-gold-champagne" />
                 <span className="text-sm">+49 172 3933412</span>
               </a>
             </div>
 
-            <div className="rounded-[1.75rem] border border-gold-champagne/12 bg-obsidian/60 p-6 mb-10">
-              <div className="text-[10px] uppercase tracking-[0.28em] text-gold-champagne font-bold mb-3">
-                Registered Office
-              </div>
-              <p className="text-sm text-steel/90 font-light leading-relaxed">
-                Marie Lindner Consulting UG (haftungsbeschränkt)
-                <br />
-                Trebeweg 11
-                <br />
-                01324 Dresden
-                <br />
-                Germany
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
+            <div className="flex space-x-5">
               <a
                 href="https://www.linkedin.com/in/marie-lindner-11247a12b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 px-6 py-3 border border-gold-champagne/20 hover:border-gold-champagne hover:bg-gold-champagne/5 transition-all duration-300 group"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
-                <Linkedin size={18} className="text-gold-champagne" />
-                <span className="text-xs uppercase tracking-widest font-bold">LinkedIn</span>
+                <Linkedin size={20} />
               </a>
-
               <a
                 href="https://wa.me/491723933412"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 px-6 py-3 border border-gold-champagne/20 hover:border-gold-champagne hover:bg-gold-champagne/5 transition-all duration-300 group"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
-                <MessageSquare size={18} className="text-gold-champagne" />
-                <span className="text-xs uppercase tracking-widest font-bold">WhatsApp</span>
+                <MessageSquare size={20} />
               </a>
-
               <a
                 href="https://www.instagram.com/marielindnerconsulting"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 px-6 py-3 border border-gold-champagne/20 hover:border-gold-champagne hover:bg-gold-champagne/5 transition-all duration-300 group"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
-                <Instagram size={18} className="text-gold-champagne" />
-                <span className="text-xs uppercase tracking-widest font-bold">Instagram</span>
+                <Instagram size={20} />
               </a>
             </div>
           </motion.div>
@@ -148,17 +127,17 @@ Sent via marielindner.de
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-obsidian p-8 md:p-12 border border-gold-champagne/20 rounded-[2rem]"
+            className="rounded-[2rem] border border-gold-champagne/20 bg-obsidian p-8 md:p-12"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <input
                   required
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your full name"
+                  placeholder={t.contact.placeholders.name}
                   className="input-field"
                 />
 
@@ -168,18 +147,18 @@ Sent via marielindner.de
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="your.name@company.com"
+                  placeholder={t.contact.placeholders.email}
                   className="input-field"
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
                 <input
                   type="text"
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  placeholder="Company / Organization (optional)"
+                  placeholder={t.contact.placeholders.company}
                   className="input-field"
                 />
 
@@ -189,11 +168,11 @@ Sent via marielindner.de
                   onChange={handleChange}
                   className="input-field cursor-pointer"
                 >
-                  <option value="Coaching & Mentoring">Coaching & Mentoring</option>
-                  <option value="Consulting">Consulting</option>
-                  <option value="Speaking">Speaking</option>
-                  <option value="Workshop / Seminar">Workshop / Seminar</option>
-                  <option value="Other">Other Inquiry</option>
+                  <option value={t.contact.options.coaching}>{t.contact.options.coaching}</option>
+                  <option value={t.contact.options.consulting}>{t.contact.options.consulting}</option>
+                  <option value={t.contact.options.speaking}>{t.contact.options.speaking}</option>
+                  <option value={t.contact.options.workshop}>{t.contact.options.workshop}</option>
+                  <option value={t.contact.options.other}>{t.contact.options.other}</option>
                 </select>
               </div>
 
@@ -203,29 +182,22 @@ Sent via marielindner.de
                 rows={6}
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell Marie a little about your situation, goals or request."
+                placeholder={t.contact.placeholders.message}
                 className="input-field resize-none"
               />
 
-              <button
-                disabled={isSubmitting}
-                type="submit"
-                className="btn-primary w-full py-5 group flex justify-center items-center"
-              >
+              <button disabled={isSubmitting} type="submit" className="btn-primary group flex w-full items-center justify-center py-5">
                 {isSubmitting ? (
                   <Loader2 className="animate-spin" size={18} />
                 ) : (
                   <>
-                    Send Inquiry
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {t.contact.submit}
+                    <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </>
                 )}
               </button>
 
-              <p className="text-xs text-steel/70 font-light leading-relaxed">
-                The form opens your email app with a prefilled message. If preferred, you can also contact Marie
-                directly via email or WhatsApp.
-              </p>
+              <p className="text-xs font-light leading-relaxed text-steel/70">{t.contact.helper}</p>
             </form>
           </motion.div>
         </div>

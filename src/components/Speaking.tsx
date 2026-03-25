@@ -1,65 +1,31 @@
 import { motion } from "motion/react";
-import { CheckCircle2, ArrowUpRight, Mic2 } from "lucide-react";
-
-const keynotes = [
-  {
-    title: "Leadership Under Pressure",
-    subtitle: "Decision quality, calm communication and responsible action",
-    outcomes: [
-      "How leaders regain clarity when complexity increases",
-      "Decision-making under pressure without losing composure",
-      "What aviation discipline teaches about leadership responsibility",
-    ],
-  },
-  {
-    title: "Executive Presence & Communication",
-    subtitle: "Confidence, clarity and authentic authority",
-    outcomes: [
-      "How leaders strengthen presence without forcing it",
-      "Structured communication in sensitive situations",
-      "Building trust through clarity, calm and consistency",
-    ],
-  },
-  {
-    title: "Change, Resilience & Self-Leadership",
-    subtitle: "Navigating transition with structure and focus",
-    outcomes: [
-      "Maintaining direction in uncertain phases",
-      "Strengthening resilience and internal stability",
-      "Turning reflection into concrete next steps",
-    ],
-  },
-];
+import { ArrowUpRight, CheckCircle2, Mic2 } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export default function Speaking() {
+  const { t } = useLanguage();
+
   return (
-    <section id="speaking" className="py-24 md:py-32 relative bg-charcoal">
+    <section id="speaking" className="relative bg-charcoal py-24 md:py-32">
       <div className="section-container">
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 xl:gap-20 items-start mb-16">
+        <div className="mb-16 grid items-start gap-14 lg:grid-cols-[0.9fr_1.1fr] xl:gap-20">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold mb-4 block">
-                Speaking
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+                {t.speaking.eyebrow}
               </span>
 
-              <h2 className="text-4xl md:text-5xl heading-serif mb-8 leading-tight text-balance">
-                Keynotes that combine <span className="text-gold-champagne">substance</span> and presence.
+              <h2 className="heading-serif mb-8 text-4xl leading-tight text-balance md:text-5xl">
+                {t.speaking.title} <span className="text-gold-champagne">{t.speaking.titleHighlight}</span>
               </h2>
 
-              <p className="text-steel font-light leading-relaxed mb-8 text-base md:text-lg">
-                Speaking is part of Marie’s work — especially where leadership, responsibility, communication and
-                decision-making meet. Her sessions are thoughtful, clear and grounded in real-world experience.
-              </p>
+              <p className="mb-8 text-base font-light leading-relaxed text-steel md:text-lg">{t.speaking.intro}</p>
 
-              <div className="rounded-[1.75rem] overflow-hidden border border-gold-champagne/12">
+              <div className="overflow-hidden rounded-[1.75rem] border border-gold-champagne/12">
                 <img
                   src="/images/hero-marie.webp"
                   alt="Marie Lindner portrait"
-                  className="w-full h-[480px] object-cover"
+                  className="h-[480px] w-full object-cover"
                   loading="lazy"
                 />
               </div>
@@ -67,43 +33,43 @@ export default function Speaking() {
           </div>
 
           <div className="grid gap-6">
-            {keynotes.map((keynote, index) => (
+            {t.speaking.keynotes.map((keynote, index) => (
               <motion.div
                 key={keynote.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group p-8 bg-obsidian/55 border border-gold-champagne/10 hover:border-gold-champagne/35 transition-all duration-500 rounded-[1.75rem]"
+                className="group rounded-[1.75rem] border border-gold-champagne/10 bg-obsidian/55 p-8 transition-all duration-500 hover:border-gold-champagne/35"
               >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="text-gold-champagne mt-1">
+                <div className="mb-6 flex items-start gap-4">
+                  <div className="mt-1 text-gold-champagne">
                     <Mic2 size={24} strokeWidth={1.4} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-serif italic text-pearl mb-2 group-hover:text-gold-champagne transition-colors">
+                    <h3 className="mb-2 text-2xl font-serif italic text-pearl transition-colors group-hover:text-gold-champagne">
                       {keynote.title}
                     </h3>
-                    <p className="text-[10px] uppercase tracking-widest text-gold-champagne font-bold">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-gold-champagne">
                       {keynote.subtitle}
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-4 mb-6">
+                <div className="mb-6 space-y-4">
                   {keynote.outcomes.map((outcome) => (
                     <div key={outcome} className="flex items-start space-x-3">
-                      <CheckCircle2 size={16} className="text-gold-champagne mt-0.5 shrink-0" />
-                      <p className="text-xs md:text-sm text-steel leading-relaxed">{outcome}</p>
+                      <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-gold-champagne" />
+                      <p className="text-xs leading-relaxed text-steel md:text-sm">{outcome}</p>
                     </div>
                   ))}
                 </div>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center text-[10px] uppercase tracking-[0.2em] text-pearl group-hover:text-gold-champagne transition-colors font-bold"
+                  className="inline-flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-pearl transition-colors group-hover:text-gold-champagne"
                 >
-                  Inquire for Speaking <ArrowUpRight size={14} className="ml-2" />
+                  {t.speaking.cta} <ArrowUpRight size={14} className="ml-2" />
                 </a>
               </motion.div>
             ))}

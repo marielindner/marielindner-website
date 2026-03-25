@@ -1,99 +1,80 @@
 import { motion } from "motion/react";
+import { useLanguage } from "../i18n";
 
 const images = [
   {
+    src: "/images/about-marie.webp",
+    alt: "Marie Lindner portrait",
+    width: 1067,
+    height: 1600,
+  },
+  {
     src: "/images/beige-bluse-marie.webp",
     alt: "Marie Lindner in beige blouse",
-    label: "Executive Presence",
-    className: "md:col-span-2 md:row-span-2",
-  },
-  {
-    src: "/images/cockpit-marie.webp",
-    alt: "Marie Lindner in cockpit",
-    label: "Aviation Background",
-    className: "md:col-span-2",
-  },
-  {
-    src: "/images/flugzeug-marie.webp",
-    alt: "Marie Lindner with aircraft",
-    label: "Commercial Pilot License",
-    className: "md:col-span-2",
-  },
-  {
-    src: "/images/hero-marie.webp",
-    alt: "Marie Lindner portrait in lounge",
-    label: "International Profile",
-    className: "md:col-span-2",
-  },
-  {
-    src: "/images/luxury-marie.webp",
-    alt: "Marie Lindner seated in luxury setting",
-    label: "Premium Client Work",
-    className: "md:col-span-2",
-  },
-  {
-    src: "/images/about-marie.webp",
-    alt: "Marie Lindner seated portrait",
-    label: "Coaching & Mentoring",
-    className: "md:col-span-2",
+    width: 1365,
+    height: 2048,
   },
   {
     src: "/images/rotes-jacket-marie1.webp",
-    alt: "Marie Lindner in red blouse",
-    label: "Confident Communication",
-    className: "md:col-span-2",
+    alt: "Marie Lindner red blazer portrait",
+    width: 1365,
+    height: 2048,
+  },
+  {
+    src: "/images/luxury-marie.webp",
+    alt: "Marie Lindner professional portrait",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: "/images/hero-marie.webp",
+    alt: "Marie Lindner leadership portrait",
+    width: 1600,
+    height: 1067,
   },
   {
     src: "/images/rotes-jacket-marie2.webp",
     alt: "Marie Lindner in red blazer",
-    label: "Leadership with Clarity",
-    className: "md:col-span-2",
+    width: 2048,
+    height: 1365,
   },
 ];
 
 export default function SignatureGallery() {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-12 md:py-20 bg-obsidian relative overflow-hidden">
-      <div className="section-container pt-0 md:pt-0">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
-          <div className="max-w-3xl">
-            <span className="text-[10px] uppercase tracking-[0.34em] text-gold-champagne font-bold block mb-4">
-              Visual Signature
-            </span>
-            <h2 className="text-3xl md:text-5xl heading-serif leading-tight text-balance">
-              A leadership profile shaped by <span className="text-gold-champagne">business, aviation</span> and
-              international perspective.
-            </h2>
-          </div>
+    <section className="relative overflow-hidden py-24">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gold-champagne/8 blur-[160px]" />
+      </div>
 
-          <p className="max-w-xl text-steel/85 font-light leading-relaxed text-sm md:text-base">
-            This visual language matters: professional, composed, approachable and unmistakably high-standard. It
-            reflects the way Marie works with clients across coaching, mentoring and selected consulting assignments.
-          </p>
-        </div>
+      <div className="section-container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mb-16 max-w-3xl"
+        >
+          <h2 className="heading-serif mb-6 text-3xl md:text-5xl">{t.gallery.title}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5 auto-rows-[220px] md:auto-rows-[180px]">
-          {images.map((image, index) => (
+          <p className="text-lg font-light leading-relaxed text-steel/90">{t.gallery.text}</p>
+        </motion.div>
+
+        <div className="columns-1 space-y-8 gap-8 [column-fill:balance] sm:columns-2 xl:columns-3">
+          {images.map((img, i) => (
             <motion.div
-              key={image.src}
-              initial={{ opacity: 0, y: 18 }}
+              key={img.src}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: i * 0.04 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: index * 0.04, duration: 0.5, ease: "easeOut" }}
-              className={`group relative overflow-hidden rounded-[1.5rem] border border-gold-champagne/12 bg-charcoal ${image.className}`}
+              className="break-inside-avoid"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/5 to-transparent" />
-              <div className="absolute left-4 right-4 bottom-4">
-                <div className="inline-flex rounded-full border border-gold-champagne/20 bg-obsidian/45 backdrop-blur-sm px-3 py-1.5">
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-gold-champagne font-bold">
-                    {image.label}
-                  </span>
+              <div className="overflow-hidden rounded-3xl border border-gold-champagne/15 bg-charcoal/85 shadow-xl transition-shadow duration-500 hover:shadow-2xl">
+                <div className="w-full bg-obsidian/40" style={{ aspectRatio: `${img.width} / ${img.height}` }}>
+                  <img src={img.src} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />
                 </div>
               </div>
             </motion.div>

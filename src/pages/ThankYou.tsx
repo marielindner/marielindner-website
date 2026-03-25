@@ -1,61 +1,59 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import { CheckCircle2, ArrowLeft, Linkedin, Instagram, MessageSquare, Mail } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Instagram, Linkedin, Mail, MessageSquare } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export default function ThankYou() {
+  const { t } = useLanguage();
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-obsidian py-24 relative overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-obsidian py-24">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-champagne/5 rounded-full blur-[150px]" />
+        <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-champagne/5 blur-[150px]" />
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 relative z-10 text-center">
+      <div className="relative z-10 mx-auto max-w-2xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="bg-charcoal border border-gold-champagne/20 p-12 md:p-16 shadow-2xl rounded-[2rem]"
+          className="rounded-[2rem] border border-gold-champagne/20 bg-charcoal p-12 shadow-2xl md:p-16"
         >
-          <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 bg-gold-champagne/10 rounded-full flex items-center justify-center border border-gold-champagne/30">
+          <div className="mb-8 flex justify-center">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-gold-champagne/30 bg-gold-champagne/10">
               <CheckCircle2 size={40} className="text-gold-champagne" />
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-5xl heading-serif mb-6">
-            Message <span className="text-gold-champagne italic">received.</span>
+          <h1 className="heading-serif mb-6 text-4xl md:text-5xl">
+            {t.thankYou.title} <span className="text-gold-champagne">{t.thankYou.titleHighlight}</span>
           </h1>
 
-          <p className="text-steel font-light leading-relaxed mb-12 text-lg">
-            Thank you for reaching out. Marie personally reviews inquiries. You can expect a response within 24–48
-            hours.
-          </p>
+          <p className="mb-12 text-lg font-light leading-relaxed text-steel">{t.thankYou.text}</p>
 
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            <div className="text-left p-6 bg-obsidian/50 border border-gold-champagne/10 rounded-2xl">
-              <h3 className="text-[10px] uppercase tracking-widest text-gold-champagne font-bold mb-4">Next Steps</h3>
+          <div className="mb-12 grid gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl border border-gold-champagne/10 bg-obsidian/50 p-6 text-left">
+              <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-gold-champagne">
+                {t.thankYou.nextSteps}
+              </h3>
               <ul className="space-y-3">
-                <li className="text-xs text-steel flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-gold-champagne rounded-full" />
-                  <span>Review of your inquiry</span>
-                </li>
-                <li className="text-xs text-steel flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-gold-champagne rounded-full" />
-                  <span>Assessment of fit and priorities</span>
-                </li>
-                <li className="text-xs text-steel flex items-center space-x-2">
-                  <div className="w-1 h-1 bg-gold-champagne rounded-full" />
-                  <span>Reply with suggested next step</span>
-                </li>
+                {t.thankYou.nextStepsList.map((step) => (
+                  <li key={step} className="flex items-center space-x-2 text-xs text-steel">
+                    <div className="h-1 w-1 rounded-full bg-gold-champagne" />
+                    <span>{step}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div className="text-left p-6 bg-obsidian/50 border border-gold-champagne/10 rounded-2xl">
-              <h3 className="text-[10px] uppercase tracking-widest text-gold-champagne font-bold mb-4">Direct Contact</h3>
+            <div className="rounded-2xl border border-gold-champagne/10 bg-obsidian/50 p-6 text-left">
+              <h3 className="mb-4 text-[10px] font-bold uppercase tracking-widest text-gold-champagne">
+                {t.thankYou.directContact}
+              </h3>
               <div className="space-y-3">
                 <a
                   href="mailto:marielindnerconsulting@gmail.com"
-                  className="flex items-center gap-2 text-xs text-steel hover:text-pearl transition-colors"
+                  className="flex items-center gap-2 text-xs text-steel transition-colors hover:text-pearl"
                 >
                   <Mail size={14} className="text-gold-champagne" />
                   <span>marielindnerconsulting@gmail.com</span>
@@ -65,7 +63,7 @@ export default function ThankYou() {
                   href="https://wa.me/491723933412"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-steel hover:text-pearl transition-colors"
+                  className="flex items-center gap-2 text-xs text-steel transition-colors hover:text-pearl"
                 >
                   <MessageSquare size={14} className="text-gold-champagne" />
                   <span>WhatsApp: +49 172 3933412</span>
@@ -80,7 +78,7 @@ export default function ThankYou() {
                 href="https://www.linkedin.com/in/marie-lindner-11247a12b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-steel hover:text-gold-champagne transition-colors"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
                 <Linkedin size={20} />
               </a>
@@ -88,7 +86,7 @@ export default function ThankYou() {
                 href="https://wa.me/491723933412"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-steel hover:text-gold-champagne transition-colors"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
                 <MessageSquare size={20} />
               </a>
@@ -96,7 +94,7 @@ export default function ThankYou() {
                 href="https://www.instagram.com/marielindnerconsulting"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-steel hover:text-gold-champagne transition-colors"
+                className="text-steel transition-colors hover:text-gold-champagne"
               >
                 <Instagram size={20} />
               </a>
@@ -104,10 +102,10 @@ export default function ThankYou() {
 
             <Link
               to="/"
-              className="inline-flex items-center text-xs uppercase tracking-widest text-pearl hover:text-gold-champagne transition-colors font-bold group"
+              className="group inline-flex items-center text-xs font-bold uppercase tracking-widest text-pearl transition-colors hover:text-gold-champagne"
             >
-              <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Home
+              <ArrowLeft size={16} className="mr-2 transition-transform group-hover:-translate-x-1" />
+              {t.thankYou.backHome}
             </Link>
           </div>
         </motion.div>
