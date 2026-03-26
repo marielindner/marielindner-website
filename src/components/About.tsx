@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { BriefcaseBusiness, Globe2, Plane, ShieldCheck } from "lucide-react";
+import { BriefcaseBusiness, CheckCircle2, Globe2, Plane, ShieldCheck } from "lucide-react";
 import { useLanguage } from "../i18n";
 
 export default function About() {
@@ -115,6 +115,69 @@ export default function About() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
+          className="mt-14 overflow-hidden rounded-[2rem] border border-gold-champagne/15 bg-charcoal/70"
+        >
+          <div className="grid items-stretch gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="p-8 md:p-10 lg:p-12">
+              <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
+                {t.about.aviationStoryEyebrow}
+              </div>
+
+              <h3 className="heading-serif mb-6 text-3xl leading-tight text-balance md:text-5xl">
+                {t.about.aviationStoryTitle} <span className="text-gold-champagne">{t.about.aviationStoryTitleHighlight}</span>
+              </h3>
+
+              <div className="space-y-5 text-sm font-light leading-relaxed text-steel/90 md:text-[15px]">
+                {t.about.aviationStoryParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {t.about.aviationStoryPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="flex items-start gap-3 rounded-2xl border border-gold-champagne/12 bg-obsidian/55 px-4 py-4"
+                  >
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-gold-champagne" />
+                    <span className="text-xs font-medium leading-relaxed text-pearl/90 md:text-sm">{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-8 max-w-3xl text-sm font-light leading-relaxed text-pearl/88 md:text-[15px]">
+                {t.about.aviationStoryClosing}
+              </p>
+            </div>
+
+            <div className="grid gap-px border-t border-gold-champagne/12 bg-gold-champagne/12 lg:border-l lg:border-t-0">
+              <div className="relative min-h-[320px] overflow-hidden bg-obsidian/60">
+                <img
+                  src="/images/cockpit-marie.webp"
+                  alt="Marie Lindner in cockpit"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
+              </div>
+              <div className="relative min-h-[260px] overflow-hidden bg-obsidian/60">
+                <img
+                  src="/images/flugzeug-marie.webp"
+                  alt="Marie Lindner with aircraft"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -9,6 +9,12 @@ const images = [
     height: 1600,
   },
   {
+    src: "/images/cockpit-marie.webp",
+    alt: "Marie Lindner in a cockpit",
+    width: 1179,
+    height: 800,
+  },
+  {
     src: "/images/beige-bluse-marie.webp",
     alt: "Marie Lindner in beige blouse",
     width: 1365,
@@ -31,6 +37,12 @@ const images = [
     alt: "Marie Lindner leadership portrait",
     width: 1600,
     height: 1067,
+  },
+  {
+    src: "/images/flugzeug-marie.webp",
+    alt: "Marie Lindner with an aircraft",
+    width: 1400,
+    height: 1000,
   },
   {
     src: "/images/rotes-jacket-marie2.webp",

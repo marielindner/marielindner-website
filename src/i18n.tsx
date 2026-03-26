@@ -92,6 +92,12 @@ type Translations = {
     foundationText: string;
     whyTitle: string;
     whyText: string;
+    aviationStoryEyebrow: string;
+    aviationStoryTitle: string;
+    aviationStoryTitleHighlight: string;
+    aviationStoryParagraphs: string[];
+    aviationStoryPoints: string[];
+    aviationStoryClosing: string;
   };
   timeline: {
     eyebrow: string;
@@ -374,6 +380,21 @@ const translations: Record<Language, Translations> = {
       whyTitle: "Warum Klienten mit ihr arbeiten",
       whyText:
         "Weil die Kombination selten ist: professionelle Glaubwürdigkeit, ruhige Autorität, unternehmerisches Verständnis und eine Arbeitsweise, die gleichzeitig strukturiert und zutiefst menschlich ist.",
+      aviationStoryEyebrow: "Aviation & Leadership",
+      aviationStoryTitle: "Leadership beginnt dort, wo Verantwortung",
+      aviationStoryTitleHighlight: "absolut wird.",
+      aviationStoryParagraphs: [
+        "Marie Lindner ist nicht nur Unternehmerin und Coach – sie ist auch ausgebildete Pilotin. Im Cockpit zählt keine Theorie, sondern Klarheit, Präzision und die Fähigkeit, in kritischen Momenten ruhig und entschlossen zu handeln.",
+        "Diese Welt hat ihren Blick auf Führung nachhaltig geprägt: Verantwortung übernehmen, Verfahren beherrschen, unter Druck klar kommunizieren und auch dann Orientierung geben, wenn nicht alle Variablen kontrollierbar sind.",
+      ],
+      aviationStoryPoints: [
+        "Entscheidungen unter Unsicherheit",
+        "Verantwortung in Momenten mit hohem Druck",
+        "Absolute Konzentration und disziplinierte Vorbereitung",
+        "Vertrauen in Systeme, Standards und das eigene Urteil",
+      ],
+      aviationStoryClosing:
+        "Genau diese Erfahrung prägt ihren Coaching-Ansatz bis heute – klar, ruhig, strukturiert und handlungsorientiert.",
     },
     timeline: {
       eyebrow: "Beruflicher Weg",
@@ -701,6 +722,21 @@ const translations: Record<Language, Translations> = {
       whyTitle: "Why clients work with her",
       whyText:
         "Because the combination is unusual: professional credibility, calm authority, entrepreneurial understanding and a way of working that is both structured and deeply human.",
+      aviationStoryEyebrow: "Aviation & Leadership",
+      aviationStoryTitle: "Leadership begins where responsibility becomes",
+      aviationStoryTitleHighlight: "absolute.",
+      aviationStoryParagraphs: [
+        "Marie Lindner is not only an entrepreneur and coach — she is also a trained pilot. In the cockpit, theory alone is not enough. Clarity, precision and calm decision-making under pressure are what matter.",
+        "That environment shaped her understanding of leadership in a lasting way: taking responsibility, mastering procedures, communicating clearly under pressure and creating orientation even when not every variable can be controlled.",
+      ],
+      aviationStoryPoints: [
+        "Decisions under uncertainty",
+        "Responsibility in high-pressure moments",
+        "Absolute focus and disciplined preparation",
+        "Trust in systems, standards and personal judgment",
+      ],
+      aviationStoryClosing:
+        "These experiences continue to shape her coaching approach today — clear, calm, structured and action-oriented.",
     },
     timeline: {
       eyebrow: "Professional Story",
