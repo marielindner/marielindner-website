@@ -16,7 +16,7 @@ export default function Footer() {
                 ML<span className="text-gold-champagne">.</span>
               </span>
               <span className="-mt-1 text-[10px] font-medium uppercase tracking-[0.3em] text-steel">
-                Consulting UG
+                Coaching
               </span>
             </Link>
 
@@ -44,7 +44,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-4 text-xs font-light leading-relaxed text-steel">
               <p>
-                Marie Lindner Consulting UG (haftungsbeschränkt)
+                Marie Lindner Coaching
                 <br />
                 Trebeweg 11
                 <br />
@@ -52,7 +52,7 @@ export default function Footer() {
                 <br />
                 Germany
               </p>
-              <p>Amtsgericht Dresden, HRB 47411</p>
+              <p>Amtsgericht Dresden</p>
             </div>
           </div>
 

@@ -170,7 +170,7 @@ const translations: Record<Language, Translations> = {
       ],
       menuLabel: "Menü",
       languageLabel: "Sprache",
-      brandAriaLabel: "Marie Lindner Consulting",
+      brandAriaLabel: "Marie Lindner Coaching",
     },
     footer: {
       tagline:
@@ -178,7 +178,7 @@ const translations: Record<Language, Translations> = {
       navigation: "Navigation",
       company: "Unternehmen",
       connect: "Kontakt",
-      rights: "© {year} Marie Lindner Consulting UG. Alle Rechte vorbehalten.",
+      rights: "© {year} Marie Lindner Coaching . Alle Rechte vorbehalten.",
       values: "Klarheit • Präsenz • Disziplin",
     },
     backToTop: {
@@ -359,7 +359,7 @@ const translations: Record<Language, Translations> = {
       perspectiveLabel: "Internationale Perspektive",
       highlightsTitle: "Professionelle Highlights",
       highlights: [
-        "Gründerin und Managing Director der Marie Lindner Consulting UG",
+        "Gründerin und Managing Director der Marie Lindner Coaching",
         "Unternehmerische Erfahrung aus Startup-Aufbau, Management und Führungsverantwortung",
         "Commercial Pilot License (CPL) und Aviation-Ausbildung in Australien",
         "Führung, Kommunikation und Entscheidungen unter Druck",
@@ -498,14 +498,14 @@ const translations: Record<Language, Translations> = {
       ],
       menuLabel: "Menu",
       languageLabel: "Language",
-      brandAriaLabel: "Marie Lindner Consulting",
+      brandAriaLabel: "Marie Lindner Coaching",
     },
     footer: {
       tagline: "Coaching, mentoring, speaking and selected project-based international consulting.",
       navigation: "Navigation",
       company: "Company",
       connect: "Connect",
-      rights: "© {year} Marie Lindner Consulting UG. All Rights Reserved.",
+      rights: "© {year} Marie Lindner Coaching. All Rights Reserved.",
       values: "Clarity • Presence • Discipline",
     },
     backToTop: {
@@ -686,7 +686,7 @@ const translations: Record<Language, Translations> = {
       perspectiveLabel: "International Perspective",
       highlightsTitle: "Professional Highlights",
       highlights: [
-        "Founder & Managing Director of Marie Lindner Consulting UG",
+        "Founder & Managing Director of Marie Lindner Coaching",
         "Entrepreneurial experience through startup build-up, management and leadership responsibility",
         "Commercial Pilot License (CPL) and aviation training in Australia",
         "Leadership, communication and decision-making under pressure",

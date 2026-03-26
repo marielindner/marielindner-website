@@ -35,7 +35,7 @@ export default function Hero() {
 
               <div className="hidden leading-tight sm:block">
                 <div className="text-base font-serif italic text-pearl md:text-lg">Marie Lindner</div>
-                <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Consulting UG</div>
+                <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Coaching</div>
               </div>
             </div>
 

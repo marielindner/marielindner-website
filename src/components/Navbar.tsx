@@ -87,7 +87,7 @@ export default function Navbar() {
         >
           <img
             src="/images/logo-ml-consulting.webp"
-            alt="Marie Lindner Consulting"
+            alt="Marie Lindner Coaching"
             className="h-10 w-auto object-contain md:h-11"
             loading="eager"
             decoding="async"
@@ -97,7 +97,7 @@ export default function Navbar() {
             <div className="text-base font-serif italic text-pearl transition-colors group-hover:text-gold-champagne md:text-lg">
               Marie Lindner
             </div>
-            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Consulting UG</div>
+            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Coaching</div>
           </div>
         </Link>
 
