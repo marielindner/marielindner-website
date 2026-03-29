@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Instagram, Linkedin, Loader2, Mail, MessageSquare, Phone, Send } from "lucide-react";
+import {
+  Instagram,
+  Linkedin,
+  Loader2,
+  Mail,
+  MessageSquare,
+  Phone,
+  Send,
+} from "lucide-react";
 import { useLanguage } from "../i18n";
+import emailjs from "@emailjs/browser";
 
+// 👉 TEST EMAIL (wichtig: nach Test wieder auf Marie ändern!)
 const TO_EMAIL = "marielindnerconsulting@gmail.com";
 
 export default function ContactForm() {
@@ -15,16 +25,21 @@ export default function ContactForm() {
     name: "",
     email: "",
     company: "",
-    interest: t.contact.options.coaching,
+    interest: t.contact.options.consulting,
     message: "",
   });
 
   React.useEffect(() => {
-    setFormData((prev) => ({ ...prev, interest: t.contact.options.coaching }));
-  }, [language, t.contact.options.coaching]);
+    setFormData((prev) => ({
+      ...prev,
+      interest: t.contact.options.consulting,
+    }));
+  }, [language, t.contact.options.consulting]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -32,50 +47,70 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill all required fields.");
+      return;
+    }
 
     setIsSubmitting(true);
 
-    const subject = `${t.contact.mailSubjectPrefix} — ${formData.interest} | ${formData.name}`;
+    try {
+      await emailjs.send(
+        "service_jqcx58t",
+        "template_2fwvb57",
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          interest: formData.interest,
+          message: formData.message,
+          to_email: TO_EMAIL,
+          reply_to: formData.email,
+        },
+        "lr6IMeITWakRJhkI5"
+      );
 
-    const body = `
-${t.contact.mailBody.fullName}: ${formData.name}
-${t.contact.mailBody.email}: ${formData.email}
-${t.contact.mailBody.company}: ${formData.company || "-"}
-
-${t.contact.mailBody.primaryInterest}: ${formData.interest}
-
-${t.contact.mailBody.message}:
-${formData.message}
-
----
-${t.contact.mailBody.sentVia}
-    `;
-
-    const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
       navigate("/thank-you");
-    }, 400);
+    } catch (error) {
+      console.error("Email send failed:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="relative bg-charcoal py-24 md:py-32">
       <div className="section-container">
         <div className="grid items-start gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
               {t.contact.eyebrow}
             </span>
 
             <h2 className="heading-serif mb-8 text-4xl text-balance md:text-6xl">
-              {t.contact.title} <span className="text-gold-champagne">{t.contact.titleHighlight}</span>
+              {t.contact.title}{" "}
+              <span className="text-gold-champagne">
+                {t.contact.titleHighlight}
+              </span>
             </h2>
 
-            <p className="mb-10 max-w-xl text-lg font-light leading-relaxed text-steel">{t.contact.intro}</p>
+            <p className="mb-10 max-w-xl text-lg font-light leading-relaxed text-steel">
+              {t.contact.intro}
+            </p>
+
+            <div className="mb-10 overflow-hidden rounded-[2rem] border border-gold-champagne/12">
+              <img
+                src="/images/hero-marie.webp"
+                alt="Marie Lindner portrait"
+                className="h-[340px] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
 
             <div className="mb-10 space-y-4">
               <a
@@ -83,7 +118,9 @@ ${t.contact.mailBody.sentVia}
                 className="flex items-center gap-3 text-pearl transition-colors hover:text-gold-champagne"
               >
                 <Mail size={18} className="text-gold-champagne" />
-                <span className="text-sm">marielindnerconsulting@gmail.com</span>
+                <span className="text-sm">
+                  marielindnerconsulting@gmail.com
+                </span>
               </a>
 
               <a
@@ -104,6 +141,7 @@ ${t.contact.mailBody.sentVia}
               >
                 <Linkedin size={20} />
               </a>
+
               <a
                 href="https://wa.me/491723933412"
                 target="_blank"
@@ -112,6 +150,7 @@ ${t.contact.mailBody.sentVia}
               >
                 <MessageSquare size={20} />
               </a>
+
               <a
                 href="https://www.instagram.com/marielindnerconsulting"
                 target="_blank"
@@ -168,11 +207,21 @@ ${t.contact.mailBody.sentVia}
                   onChange={handleChange}
                   className="input-field cursor-pointer"
                 >
-                  <option value={t.contact.options.coaching}>{t.contact.options.coaching}</option>
-                  <option value={t.contact.options.consulting}>{t.contact.options.consulting}</option>
-                  <option value={t.contact.options.speaking}>{t.contact.options.speaking}</option>
-                  <option value={t.contact.options.workshop}>{t.contact.options.workshop}</option>
-                  <option value={t.contact.options.other}>{t.contact.options.other}</option>
+                  <option value={t.contact.options.coaching}>
+                    {t.contact.options.coaching}
+                  </option>
+                  <option value={t.contact.options.consulting}>
+                    {t.contact.options.consulting}
+                  </option>
+                  <option value={t.contact.options.speaking}>
+                    {t.contact.options.speaking}
+                  </option>
+                  <option value={t.contact.options.workshop}>
+                    {t.contact.options.workshop}
+                  </option>
+                  <option value={t.contact.options.other}>
+                    {t.contact.options.other}
+                  </option>
                 </select>
               </div>
 
@@ -186,7 +235,11 @@ ${t.contact.mailBody.sentVia}
                 className="input-field resize-none"
               />
 
-              <button disabled={isSubmitting} type="submit" className="btn-primary group flex w-full items-center justify-center py-5">
+              <button
+                disabled={isSubmitting}
+                type="submit"
+                className="btn-primary group flex w-full items-center justify-center py-5"
+              >
                 {isSubmitting ? (
                   <Loader2 className="animate-spin" size={18} />
                 ) : (
@@ -197,7 +250,9 @@ ${t.contact.mailBody.sentVia}
                 )}
               </button>
 
-              <p className="text-xs font-light leading-relaxed text-steel/70">{t.contact.helper}</p>
+              <p className="text-xs font-light leading-relaxed text-steel/70">
+                {t.contact.helper}
+              </p>
             </form>
           </motion.div>
         </div>
@@ -205,3 +260,4 @@ ${t.contact.mailBody.sentVia}
     </section>
   );
 }
+

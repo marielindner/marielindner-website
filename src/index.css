@@ -21,6 +21,9 @@
 
   body {
     @apply bg-obsidian text-pearl font-sans antialiased selection:bg-gold-champagne selection:text-obsidian;
+    background-image:
+      radial-gradient(circle at top right, rgba(176, 141, 87, 0.14), transparent 28%),
+      radial-gradient(circle at bottom left, rgba(176, 141, 87, 0.08), transparent 26%);
   }
 
   * {
@@ -34,15 +37,15 @@
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32;
+    @apply mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-32 lg:px-16;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-gold-champagne text-obsidian font-semibold uppercase tracking-widest text-xs transition-all duration-300 hover:bg-gold-soft hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed rounded-full;
+    @apply inline-flex items-center justify-center rounded-full bg-gold-champagne px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-obsidian transition-all duration-300 hover:scale-[1.02] hover:bg-gold-soft active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 border border-gold-champagne/30 text-gold-champagne font-semibold uppercase tracking-widest text-xs transition-all duration-300 hover:bg-gold-champagne/10 hover:border-gold-champagne hover:scale-[1.02] active:scale-[0.98] rounded-full;
+    @apply inline-flex items-center justify-center rounded-full border border-gold-champagne/30 px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold-champagne transition-all duration-300 hover:scale-[1.02] hover:border-gold-champagne hover:bg-gold-champagne/10 active:scale-[0.98];
   }
 
   .heading-serif {
@@ -53,12 +56,12 @@
     text-wrap: balance;
   }
 
-  .aviation-line {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-champagne/40 to-transparent;
-  }
-
   .input-field {
     @apply w-full rounded-2xl border border-gold-champagne/15 bg-charcoal/60 px-5 py-4 text-sm text-pearl placeholder:text-steel/55 outline-none transition-all duration-300 focus:border-gold-champagne/45 focus:bg-charcoal;
+  }
+
+  .glass-card {
+    @apply rounded-[1.75rem] border border-gold-champagne/12 bg-charcoal/50 backdrop-blur-sm;
   }
 
   .language-toggle {
@@ -79,5 +82,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold-champagne/20 hover:bg-gold-champagne/40 transition-colors;
+  @apply bg-gold-champagne/20 transition-colors hover:bg-gold-champagne/40;
 }

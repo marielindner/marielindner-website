@@ -8,17 +8,10 @@ export default function BackToTop() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setIsVisible(window.scrollY > 500);
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
+    const toggleVisibility = () => setIsVisible(window.scrollY > 500);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <AnimatePresence>
@@ -27,8 +20,8 @@ export default function BackToTop() {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
-          onClick={scrollToTop}
-          className="group fixed bottom-8 right-8 z-40 bg-gold-champagne p-4 text-obsidian shadow-2xl transition-colors hover:bg-gold-soft"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="group fixed bottom-8 right-8 z-40 rounded-full bg-gold-champagne p-4 text-obsidian shadow-2xl transition-colors hover:bg-gold-soft"
           aria-label={t.backToTop.ariaLabel}
         >
           <ArrowUp size={20} className="transition-transform group-hover:-translate-y-1" />

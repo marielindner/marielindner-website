@@ -1,54 +1,31 @@
 import { motion } from "motion/react";
 import { useLanguage } from "../i18n";
 
-const images = [
-  {
-    src: "/images/about-marie.webp",
-    alt: "Marie Lindner portrait",
-    width: 1067,
-    height: 1600,
-  },
-  {
-    src: "/images/cockpit-marie.webp",
-    alt: "Marie Lindner in a cockpit",
-    width: 1179,
-    height: 800,
-  },
-  {
-    src: "/images/beige-bluse-marie.webp",
-    alt: "Marie Lindner in beige blouse",
-    width: 1365,
-    height: 2048,
-  },
-  {
-    src: "/images/rotes-jacket-marie1.webp",
-    alt: "Marie Lindner red blazer portrait",
-    width: 1365,
-    height: 2048,
-  },
-  {
-    src: "/images/luxury-marie.webp",
-    alt: "Marie Lindner professional portrait",
-    width: 1200,
-    height: 1600,
-  },
+const items = [
   {
     src: "/images/hero-marie.webp",
-    alt: "Marie Lindner leadership portrait",
-    width: 1600,
-    height: 1067,
+    alt: "Marie Lindner seated portrait",
+    className: "md:col-span-7",
   },
   {
     src: "/images/flugzeug-marie.webp",
-    alt: "Marie Lindner with an aircraft",
-    width: 1400,
-    height: 1000,
+    alt: "Marie Lindner with aircraft",
+    className: "md:col-span-5",
   },
   {
-    src: "/images/rotes-jacket-marie2.webp",
+    src: "/images/about-marie.webp",
+    alt: "Marie Lindner smiling portrait",
+    className: "md:col-span-4",
+  },
+  {
+    src: "/images/rotes-jacket-marie1.webp",
     alt: "Marie Lindner in red blazer",
-    width: 2048,
-    height: 1365,
+    className: "md:col-span-4",
+  },
+  {
+    src: "/images/cockpit-marie.webp",
+    alt: "Marie Lindner in cockpit",
+    className: "md:col-span-4",
   },
 ];
 
@@ -56,7 +33,7 @@ export default function SignatureGallery() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-24 md:py-32">
       <div className="absolute inset-0 z-0">
         <div className="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gold-champagne/8 blur-[160px]" />
       </div>
@@ -69,27 +46,34 @@ export default function SignatureGallery() {
           viewport={{ once: true }}
           className="mb-16 max-w-3xl"
         >
-          <h2 className="heading-serif mb-6 text-3xl md:text-5xl">{t.gallery.title}</h2>
-
-          <p className="text-lg font-light leading-relaxed text-steel/90">{t.gallery.text}</p>
+          <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">{t.gallery.eyebrow}</span>
+          <h2 className="heading-serif mb-6 text-3xl md:text-5xl">
+            {t.gallery.title} <span className="text-gold-champagne">{t.gallery.highlight}</span>
+          </h2>
+          <p className="text-lg font-light leading-relaxed text-steel/90">{t.gallery.intro}</p>
         </motion.div>
 
-        <div className="columns-1 space-y-8 gap-8 [column-fill:balance] sm:columns-2 xl:columns-3">
-          {images.map((img, i) => (
+        <div className="grid gap-6 md:grid-cols-12">
+          {items.map((item, index) => (
             <motion.div
-              key={img.src}
+              key={item.src}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: i * 0.04 }}
+              transition={{ duration: 0.55, delay: index * 0.05 }}
               viewport={{ once: true, margin: "-60px" }}
-              className="break-inside-avoid"
+              className={`${item.className} overflow-hidden rounded-[2rem] border border-gold-champagne/12 bg-charcoal/85`}
             >
-              <div className="overflow-hidden rounded-3xl border border-gold-champagne/15 bg-charcoal/85 shadow-xl transition-shadow duration-500 hover:shadow-2xl">
-                <div className="w-full bg-obsidian/40" style={{ aspectRatio: `${img.width} / ${img.height}` }}>
-                  <img src={img.src} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />
-                </div>
-              </div>
+              <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
             </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {t.gallery.items.map((item) => (
+            <div key={item.title} className="glass-card p-6 md:p-7">
+              <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-gold-champagne">{item.title}</div>
+              <p className="text-sm font-light leading-relaxed text-steel/90">{item.text}</p>
+            </div>
           ))}
         </div>
       </div>

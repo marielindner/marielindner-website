@@ -7,7 +7,7 @@ type NavLink = {
   href: string;
 };
 
-type Translations = {
+type TranslationShape = {
   nav: {
     links: NavLink[];
     menuLabel: string;
@@ -27,89 +27,72 @@ type Translations = {
   };
   hero: {
     badge: string;
-    titleLine1: string;
-    titleHighlight: string;
+    title: string;
+    highlight: string;
     intro: string;
     supporting: string;
     primaryCta: string;
     secondaryCta: string;
     cards: Array<{ title: string; text: string }>;
   };
+  aviation: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    text: string;
+    quote: string;
+  };
+  services: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    intro: string;
+    serviceTitle: string;
+    focusTitle: string;
+    focusItems: string[];
+  };
+  value: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    intro: string;
+    gainsTitle: string;
+    gains: string[];
+    objectiveTitle: string;
+    objectiveText: string;
+  };
+  whyMarie: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    intro: string;
+    blocks: Array<{
+      title: string;
+      paragraphs: string[];
+      bullets?: string[];
+    }>;
+  };
+  audience: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    intro: string;
+    companiesTitle: string;
+    companies: string[];
+    shortTitle: string;
+    shortText: string;
+  };
   gallery: {
-    title: string;
-    text: string;
-  };
-  differentiator: {
     eyebrow: string;
     title: string;
-    titleHighlight: string;
+    highlight: string;
     intro: string;
-    pillars: Array<{ title: string; text: string }>;
-    closing: string;
-  };
-  coaching: {
-    eyebrow: string;
-    title: string;
-    titleHighlight: string;
-    intro: string;
-    text: string;
-    cta: string;
-    offers: Array<{ title: string; subtitle: string; text: string }>;
-    coreFocusEyebrow: string;
-    coreFocusTitle: string;
-    coreFocusText: string;
-    typicalClients: string;
-    clientList: string[];
-  };
-  consulting: {
-    eyebrow: string;
-    titleLine1: string;
-    titleHighlight: string;
-    intro: string;
-    currentEngagement: string;
-    currentEngagementText: string;
-    cta: string;
-    areas: Array<{ title: string; description: string }>;
-  };
-  speaking: {
-    eyebrow: string;
-    title: string;
-    titleHighlight: string;
-    intro: string;
-    cta: string;
-    keynotes: Array<{ title: string; subtitle: string; outcomes: string[] }>;
-  };
-  about: {
-    eyebrow: string;
-    titleLine1: string;
-    titleHighlight: string;
-    paragraphs: string[];
-    pilotLabel: string;
-    perspectiveLabel: string;
-    highlightsTitle: string;
-    highlights: string[];
-    foundationTitle: string;
-    foundationText: string;
-    whyTitle: string;
-    whyText: string;
-    aviationStoryEyebrow: string;
-    aviationStoryTitle: string;
-    aviationStoryTitleHighlight: string;
-    aviationStoryParagraphs: string[];
-    aviationStoryPoints: string[];
-    aviationStoryClosing: string;
-  };
-  timeline: {
-    eyebrow: string;
-    title: string;
-    titleHighlight: string;
-    intro: string;
-    items: Array<{ period: string; title: string; description: string }>;
+    items: Array<{ title: string; text: string }>;
   };
   socialProof: {
     eyebrow: string;
     title: string;
-    titleHighlight: string;
+    highlight: string;
     intro: string;
     testimonials: Array<{ quote: string; author: string; role: string }>;
     featuredInterview: string;
@@ -119,12 +102,11 @@ type Translations = {
     editorialFeature: string;
     editorialFeatureTitle: string;
     editorialFeatureText: string;
-    editorialFeatureCta: string;
   };
   contact: {
     eyebrow: string;
     title: string;
-    titleHighlight: string;
+    highlight: string;
     intro: string;
     placeholders: {
       name: string;
@@ -133,10 +115,10 @@ type Translations = {
       message: string;
     };
     options: {
-      coaching: string;
       consulting: string;
-      speaking: string;
+      leadership: string;
       workshop: string;
+      speaking: string;
       other: string;
     };
     submit: string;
@@ -153,7 +135,7 @@ type Translations = {
   };
   thankYou: {
     title: string;
-    titleHighlight: string;
+    highlight: string;
     text: string;
     nextSteps: string;
     nextStepsList: string[];
@@ -162,279 +144,192 @@ type Translations = {
   };
 };
 
-const translations: Record<Language, Translations> = {
+const translations: Record<Language, TranslationShape> = {
   de: {
     nav: {
       links: [
         { name: "Start", href: "#home" },
-        { name: "Coaching & Mentoring", href: "#coaching" },
-        { name: "Consulting", href: "#consulting" },
-        { name: "Speaking", href: "#speaking" },
-        { name: "Über Marie", href: "#about" },
+        { name: "Leistung", href: "#services" },
+        { name: "Mehrwert", href: "#value" },
+        { name: "Warum ich", href: "#why-marie" },
         { name: "Referenzen", href: "#references" },
         { name: "Kontakt", href: "#contact" },
       ],
       menuLabel: "Menü",
       languageLabel: "Sprache",
-      brandAriaLabel: "Marie Lindner Coaching",
+      brandAriaLabel: "Marie Lindner Consulting",
     },
     footer: {
-      tagline:
-        "Coaching, Mentoring, Speaking und ausgewählte internationale Projektberatungen.",
+      tagline: "Interkulturelle Persönlichkeits- und Unternehmensberatung mit klarem Fokus auf internationale Zusammenarbeit, Führungsstärke und kulturelle Kompetenz.",
       navigation: "Navigation",
       company: "Unternehmen",
       connect: "Kontakt",
-      rights: "© {year} Marie Lindner Coaching . Alle Rechte vorbehalten.",
-      values: "Klarheit • Präsenz • Disziplin",
+      rights: "© {year} Marie Lindner Consulting. Alle Rechte vorbehalten.",
+      values: "Klarheit • Vertrauen • kulturelle Kompetenz",
     },
     backToTop: {
       ariaLabel: "Nach oben scrollen",
     },
     hero: {
-      badge: "Coaching • Mentoring • Internationale Projektberatung",
-      titleLine1: "Klarheit für Menschen in Verantwortung.",
-      titleHighlight: "Sicherheit in Bewegung.",
+      badge: "Interkulturelle Persönlichkeits- und Unternehmensberatung",
+      title: "Klarheit in internationalen",
+      highlight: "Geschäftsbeziehungen",
       intro:
-        "Marie Lindner begleitet Unternehmerinnen und Unternehmer, Führungskräfte und ambitionierte Entscheidungsträger dabei, Komplexität zu navigieren, Führungskompetenz zu stärken und echte, nachhaltige Veränderung zu schaffen.",
+        "Internationale Zusammenarbeit scheitert selten an Strategie, sondern häufig an kulturellen Missverständnissen zwischen ihren Akteuren.",
       supporting:
-        "Neben Coaching und Mentoring unterstützt sie ausgewählte internationale Beratungsmandate und ist aktuell in ein internationales IT-Projekt eingebunden. Ihr Aviation-Hintergrund prägt ihre Arbeitsweise bis heute: ruhige Urteilsfähigkeit, Struktur unter Druck und disziplinierte Umsetzung.",
-      primaryCta: "Coaching entdecken",
-      secondaryCta: "Gespräch anfragen",
+        "Unterschiedliche Mentalitäten, Kommunikationsstile und Erwartungen führen im Geschäftsalltag oft zu Reibung, ineffizienten Prozessen oder sogar zum Verlust von Kunden und Partnerschaften. Hier setze ich an.",
+      primaryCta: "Beratung anfragen",
+      secondaryCta: "Mehr erfahren",
       cards: [
         {
-          title: "Coaching",
-          text: "1:1 Coaching, Mentoring, Entwicklung in Kleingruppen und Executive Sparring.",
+          title: "Internationale Kommunikation",
+          text: "Klare Kommunikation und wirksame Verhandlungsführung in anspruchsvollen internationalen Konstellationen.",
         },
         {
-          title: "Consulting",
-          text: "Projektbasierte internationale Arbeit mit Fokus auf Klarheit, Koordination und Umsetzung.",
+          title: "Kulturelles Feingefühl",
+          text: "Verständnis für Mentalitäten, Erwartungen und geschäftliche Umgangsformen über Grenzen hinweg.",
         },
         {
-          title: "Aviation",
-          text: "Die Ausbildung zur Verkehrspilotin prägt Disziplin, Präzision und Entscheidungsstärke.",
+          title: "Praxisnähe",
+          text: "Strategien, die sich im Alltag tragen und Führungsteams sofort handlungsfähiger machen.",
         },
       ],
+    },
+    aviation: {
+      eyebrow: "Aviation & Leadership",
+      title: "Verantwortung beginnt dort, wo sie nicht delegiert werden kann –",
+      highlight: "und genau dort entsteht Klarheit.",
+      text:
+        "Die Aviation-Erfahrung prägt den Blick auf Führung, Entscheidungen und internationale Zusammenarbeit bis heute: ruhig bleiben, Lagebilder einordnen, klar kommunizieren und unter Druck zuverlässig handeln.",
+      quote: "Leadership beginnt dort, wo Verantwortung absolut wird.",
+    },
+    services: {
+      eyebrow: "Meine Leistung",
+      title: "Interkulturelle Beratung mit",
+      highlight: "konkretem geschäftlichem Nutzen.",
+      intro:
+        "Ich unterstütze Unternehmen und Führungskräfte dabei, interkulturelle Kompetenz gezielt aufzubauen und strategisch einzusetzen.",
+      serviceTitle: "Schwerpunkte meiner Beratung",
+      focusTitle: "Unternehmerische Perspektive mit internationalem Realitätsbezug",
+      focusItems: [
+        "Internationale Kommunikation und Verhandlungsführung",
+        "Verständnis kultureller Unterschiede im geschäftlichen Umgang",
+        "Aufbau nachhaltiger Kunden- und Geschäftsbeziehungen",
+        "Führung internationaler Teams",
+        "Vermeidung typischer interkultureller Konflikte",
+        "Entwicklung praxisnaher Strategien für den Umgang mit internationalen Märkten",
+      ],
+    },
+    value: {
+      eyebrow: "Ihr Mehrwert",
+      title: "Mehr Sicherheit, mehr Klarheit,",
+      highlight: "mehr Wirkung im internationalen Umfeld.",
+      intro:
+        "Durch meine Beratung gewinnen Sie und Ihr Team Sicherheit, Geschwindigkeit und Souveränität in internationalen Geschäftssituationen.",
+      gainsTitle: "Durch meine Beratung gewinnen Sie und Ihr Team",
+      gains: [
+        "Sicherheit im Umgang mit internationalen Geschäftspartnern",
+        "Schnellere, klarere Entscheidungsprozesse",
+        "Stärkere Kundenbindung über kulturelle Grenzen hinweg",
+        "Weniger Missverständnisse – mehr Effizienz",
+        "Professionelles Auftreten in globalen Märkten",
+      ],
+      objectiveTitle: "Das Ziel",
+      objectiveText:
+        "Ihre Mitarbeiter sind in der Lage, selbstständig, souverän und respektvoll in internationalen Kontexten zu agieren – und dabei Mehrwerte zu schaffen. Steigern Sie Ihre interkulturelle Kompetenz.",
+    },
+    whyMarie: {
+      eyebrow: "Warum ich",
+      title: "Internationale Erfahrung, unternehmerische Praxis und",
+      highlight: "echtes kulturelles Verständnis.",
+      intro:
+        "Ich verbinde persönliche Auslandserfahrung mit unternehmerischer Praxis und einem Blick auf internationale Zusammenarbeit, der nicht aus Theorie, sondern aus gelebter Erfahrung entstanden ist.",
+      blocks: [
+        {
+          title: "Persönliche internationale Prägung",
+          paragraphs: [
+            "Mit 17 Jahren wanderte ich von Dresden nach Australien aus und lebte dort über ein Jahrzehnt – zunächst in Melbourne, sodann in Sydney.",
+            "Das Eintauchen in einen anderen Kulturkreis und das Kennenlernen einer anderen Denk- und Lebensweise haben mich in besonderer Weise geprägt. Diese Erfahrung erlaubt es mir, auf viele Fragestellungen mit einem anderen Blick zu schauen und aktiv zur Lösung von Problemen beizutragen.",
+          ],
+          bullets: [
+            "Ausbildung zur Verkehrspilotin",
+            "Studium der Luftfahrt mit Abschluss im Oktober 2004",
+            "Frühes Lernen, sich in einer neuen, nämlich australischen Kultur zurechtzufinden und Deutschland aus der Ferne neu einzuordnen",
+          ],
+        },
+        {
+          title: "Unternehmerische Erfahrung",
+          paragraphs: [
+            "Neben meiner internationalen Prägung bringe ich umfassende Erfahrung im Aufbau und in der Entwicklung von Geschäftsbeziehungen mit.",
+            "Aus eigener beruflicher Tätigkeit bin ich vertraut mit dem Zugang auf neue Geschäftspartner, Vertrauen aufzubauen und kulturelle Unterschiede zu erkennen und mit ihnen verantwortungsvoll umzugehen, denn beruflicher Erfolg setzt wechselseitiges Verständnis und Respekt voraus.",
+          ],
+          bullets: [
+            "Aufbau und Führung von Unternehmensstrukturen",
+            "Arbeit mit unterschiedlichsten Kundengruppen – von Unternehmern bis Fachkräften",
+            "Entwicklung langfristiger Kundenbindungen und Kooperationen",
+          ],
+        },
+        {
+          title: "Meine Kernkompetenz",
+          paragraphs: [
+            "Ich verfüge über das notwendige Feingefühl, mich in unterschiedliche Denk- und Verhaltensmuster hineinzuversetzen, und über die Fähigkeit, mögliche kulturelle Unterschiede im Umgang zu berücksichtigen, damit Missverständnisse nicht in Misserfolge einmünden.",
+            "Ich zeige Ihnen, wie unterschiedliche Mentalitäten funktionieren, wie Sie Kommunikation gezielt anpassen, wie Sie respektvoll und gleichzeitig klar führen und wie Sie auch in anderen Systemen erfolgreich bleiben.",
+          ],
+        },
+        {
+          title: "Mein Ansatz",
+          paragraphs: [
+            "Kein abstraktes könnte, müsste, sollte oder vielleicht und keine wenig funktionalen Lehrbuchansätze.",
+            "Sondern lebensnahe Erörterung von Praxisfällen, Trainieren und Meistern von häufig anzutreffenden Problemfeldern – auf Ihr Unternehmen zugeschnitten.",
+            "Mein Ziel ist nicht kurzfristig verlaufendes Wissen, sondern ein belastbares Gespür zu entwickeln und dieses mit Kompetenzaufbau zu verbinden. Dies erlaubt die strategisch gut positionierte Vorbereitung auf Ihren Alltag.",
+          ],
+        },
+      ],
+    },
+    audience: {
+      eyebrow: "Für wen ist das relevant?",
+      title: "Für Unternehmen, die international",
+      highlight: "denken, handeln oder wachsen wollen.",
+      intro:
+        "Diese Beratung ist besonders relevant für Unternehmen, die internationale Beziehungen professionell gestalten und kulturelle Unterschiede als strategischen Vorteil nutzen möchten.",
+      companiesTitle: "Für Unternehmen, die",
+      companies: [
+        "international tätig sind oder expandieren",
+        "mit internationalen Kunden oder Partnern arbeiten",
+        "Teams mit unterschiedlichen kulturellen Hintergründen führen",
+        "ihre Marktposition im Ausland stärken möchten",
+      ],
+      shortTitle: "Kurz gesagt",
+      shortText:
+        "Ich helfe Ihnen dabei, den Mehrwert einer multinationalen Arbeits- und Geschäftswelt zu Ihrem Vorteil zu wenden. Kulturelle Unterschiede stellen bei aufmerksamem und respektvollem Umgang kein Risiko, sondern vielmehr eine Chance dar – dies gilt strategisch zu nutzen. Eine wettbewerblich ausgerichtete Wirtschaftsordnung verlangt, besser zu sein als die anderen. Sprechen Sie mich einfach an.",
     },
     gallery: {
-      title: "Ein Führungsprofil, geprägt durch Wirtschaft, Aviation und internationale Perspektive.",
-      text:
-        "Erfahrung über Branchen, Kulturen und Umfelder mit hoher Verantwortung hinweg hat einen ruhigen, strukturierten und entschlossenen Führungsstil geformt – mit Fokus auf Klarheit, Verantwortung und echte Wirkung.",
-    },
-    differentiator: {
-      eyebrow: "Was Marie auszeichnet",
-      title: "Eine seltene Kombination aus",
-      titleHighlight: "Führung, Präsenz und Realitätssinn.",
+      eyebrow: "Signature Moments",
+      title: "Eine Geschichte aus Haltung, Klarheit und",
+      highlight: "internationaler Perspektive.",
       intro:
-        "Marie verbindet unternehmerische Erfahrung, Führungsverantwortung, Coaching-Kompetenz und Aviation-Disziplin zu einer Arbeitsweise, die gleichzeitig klar, menschlich und wirkungsvoll ist.",
-      pillars: [
-        {
-          title: "Unternehmerische Realität",
-          text: "Erfahrung aus Aufbauarbeit, Verantwortung und echter operativer Führung statt rein theoretischer Perspektive.",
-        },
-        {
-          title: "Ruhige Autorität",
-          text: "Klare Kommunikation, Präsenz und eine strukturierte Haltung – gerade in anspruchsvollen Situationen.",
-        },
-        {
-          title: "Aviation-Disziplin",
-          text: "Standards in Präzision, Fokus und Entscheidungsqualität aus einem Umfeld, in dem Verantwortung nicht verhandelbar ist.",
-        },
-      ],
-      closing:
-        "Das Ergebnis ist eine Begleitung, die Vertrauen schafft, Orientierung gibt und Bewegung in komplexe Situationen bringt.",
-    },
-    coaching: {
-      eyebrow: "Coaching & Mentoring",
-      title: "Begleitung für Menschen mit",
-      titleHighlight: "echter Verantwortung.",
-      intro:
-        "Marie arbeitet mit Unternehmerinnen und Unternehmern, Führungskräften und ambitionierten Persönlichkeiten in Momenten, die Klarheit, Resilienz, starke Kommunikation und geerdete Entscheidungen verlangen.",
-      text:
-        "Ihr Ansatz verbindet unternehmerische Erfahrung, Führungsrealität und professionelle Coaching-Methoden. Die Arbeit ist strukturiert, persönlich und ergebnisorientiert – mit dem Ziel, Klarheit, Sicherheit und nachhaltige Entwicklung zu schaffen.",
-      cta: "Coaching anfragen",
-      offers: [
-        {
-          title: "1:1 Coaching",
-          subtitle: "Individuelle Begleitung für Führungskräfte und Entscheidungsträger",
-          text: "Fokussiertes Coaching für Führungsklarheit, Entscheidungsqualität, Rollenverständnis, Kommunikation und persönliche Wirksamkeit – online oder vor Ort.",
-        },
-        {
-          title: "Gruppenprogramme",
-          subtitle: "Entwicklung in einem kuratierten Kleingruppen-Setting",
-          text: "Kleine Formate für Reflexion, Wachstum und Austausch zu Resilienz, Selbstführung, innerer Sicherheit und Executive Presence.",
-        },
-        {
-          title: "Workshops & Seminare",
-          subtitle: "Gezielte Formate für Teams, Netzwerke und Organisationen",
-          text: "Kompakte, hochwertige Workshops zu Führung, Kommunikation, mentaler Stärke und Veränderung – ideal für Unternehmen, Communities und Events.",
-        },
-        {
-          title: "Exklusive Retreats",
-          subtitle: "Intensive Entwicklungsformate in Europa",
-          text: "Ausgewählte Retreat-Konzepte für tiefere Transformation und strategische Klarheit – in inspirierenden Settings wie Mallorca oder am Bodensee.",
-        },
-      ],
-      coreFocusEyebrow: "Kernfokus",
-      coreFocusTitle: "Führung, Entscheidungen und nachhaltige Veränderung.",
-      coreFocusText:
-        "Ob es um Druck in der Führungsrolle, einen strategischen Übergang, ein Kommunikationsthema oder stärkere Selbstführung geht: Im Zentrum steht immer, Menschen mit Klarheit und Integrität voranzubringen.",
-      typicalClients: "Typische Klienten",
-      clientList: [
-        "Unternehmerinnen und Unternehmer",
-        "Executives",
-        "Managerinnen und Manager",
-        "Founders",
-        "Ambitionierte Menschen in Übergangsphasen",
-      ],
-    },
-    consulting: {
-      eyebrow: "Consulting",
-      titleLine1: "Ausgewählte internationale Mandate –",
-      titleHighlight: "projektbasiert und präzise.",
-      intro:
-        "Zusätzlich zu Coaching und Mentoring übernimmt Marie Lindner ausgewählte Beratungsmandate mit internationaler Ausrichtung. Diese Arbeit ist bewusst projektbasiert, vertraulich und stark auf Umsetzung ausgerichtet.",
-      currentEngagement: "Aktuelles Mandat",
-      currentEngagementText:
-        "Marie ist aktuell in ein internationales IT-Projekt eingebunden. Details bleiben vertraulich, doch das Mandat steht exemplarisch für jene funktionsübergreifenden, internationalen Aufgaben mit hoher Verantwortung, die sie selektiv unterstützt.",
-      cta: "Consulting anfragen",
-      areas: [
-        {
-          title: "Projektbasierte Beratung",
-          description:
-            "Marie unterstützt ausgewählte Mandate dort, wo Struktur, Koordination, Kommunikation und disziplinierte Umsetzung entscheidend sind.",
-        },
-        {
-          title: "Internationaler Fokus",
-          description:
-            "Ihre Beratungsarbeit ist international ausgerichtet und projektbezogen aufgebaut – mit klaren Erwartungen, definiertem Scope und hoher Diskretion.",
-        },
-        {
-          title: "Zusammenarbeit mit Führungsteams",
-          description:
-            "Sie unterstützt Gründer, Führungsteams und Stakeholder dabei, Prioritäten auszurichten, Umsetzung zu stärken und Projekte mit Sicherheit voranzubringen.",
-        },
-      ],
-    },
-    speaking: {
-      eyebrow: "Speaking",
-      title: "Keynotes mit",
-      titleHighlight: "Substanz und Präsenz.",
-      intro:
-        "Speaking ist Teil von Maries Arbeit – besonders dort, wo Führung, Verantwortung, Kommunikation und Entscheidungsfähigkeit aufeinandertreffen. Ihre Sessions sind reflektiert, klar und in echter Praxiserfahrung verankert.",
-      cta: "Speaking anfragen",
-      keynotes: [
-        {
-          title: "Leadership unter Druck",
-          subtitle: "Entscheidungsqualität, ruhige Kommunikation und verantwortliches Handeln",
-          outcomes: [
-            "Wie Führungskräfte Klarheit zurückgewinnen, wenn Komplexität steigt",
-            "Entscheiden unter Druck, ohne innere Ruhe zu verlieren",
-            "Was Aviation-Disziplin über Führungsverantwortung lehrt",
-          ],
-        },
-        {
-          title: "Executive Presence & Kommunikation",
-          subtitle: "Sicherheit, Klarheit und authentische Autorität",
-          outcomes: [
-            "Wie Führungskräfte Präsenz stärken, ohne sich zu verbiegen",
-            "Strukturierte Kommunikation in sensiblen Situationen",
-            "Vertrauen durch Klarheit, Ruhe und Konsistenz aufbauen",
-          ],
-        },
-        {
-          title: "Veränderung, Resilienz & Selbstführung",
-          subtitle: "Übergänge mit Struktur und Fokus gestalten",
-          outcomes: [
-            "Auch in unsicheren Phasen handlungsfähig bleiben",
-            "Resilienz und innere Stabilität gezielt stärken",
-            "Reflexion in konkrete nächste Schritte übersetzen",
-          ],
-        },
-      ],
-    },
-    about: {
-      eyebrow: "Über Marie Lindner",
-      titleLine1: "Unternehmerische Erfahrung.",
-      titleHighlight: "Menschliche Klarheit.",
-      paragraphs: [
-        "Marie Lindner verbindet praktische unternehmerische Erfahrung mit Führungsverantwortung, strukturierter Coaching-Arbeit und einem Aviation-Hintergrund, der ihre Standards früh geprägt hat.",
-        "Im Aufbau und in der Mitverantwortung eines Startups sammelte sie Hands-on-Erfahrung in Management, Organisation, strategischem Denken, Umsetzung und Kommunikation. Diese Arbeit schuf ein tiefes Verständnis dafür, wie Führung unter Druck tatsächlich funktioniert – und wo Klarheit am meisten gebraucht wird.",
-        "Heute begleitet sie Unternehmerinnen und Unternehmer, Executives und ambitionierte Persönlichkeiten, die bessere Entscheidungen, stärkere Selbstführung, klarere Kommunikation und mehr geerdete Wirksamkeit wollen.",
-      ],
-      pilotLabel: "Commercial Pilot License (CPL)",
-      perspectiveLabel: "Internationale Perspektive",
-      highlightsTitle: "Professionelle Highlights",
-      highlights: [
-        "Gründerin und Managing Director der Marie Lindner Coaching",
-        "Unternehmerische Erfahrung aus Startup-Aufbau, Management und Führungsverantwortung",
-        "Commercial Pilot License (CPL) und Aviation-Ausbildung in Australien",
-        "Führung, Kommunikation und Entscheidungen unter Druck",
-        "Professionelle Coaching-Ausbildung mit Leadership-Fokus",
-        "Internationaler Hintergrund mit Deutsch und Englisch auf hohem Niveau",
-        "Starkes Netzwerk aus Unternehmern, Führungskräften und Business-Communities",
-        "Strukturierte, vertrauensvolle Arbeit mit Menschen in Übergängen und Rollen mit hoher Verantwortung",
-      ],
-      foundationTitle: "Coaching-Fundament",
-      foundationText:
-        "Maries Arbeit ist geprägt von führungsorientierter Coaching-Ausbildung, Kommunikationspsychologie, persönlicher Entwicklung und resilienzorientierten Methoden – immer verbunden mit echter Business-Perspektive.",
-      whyTitle: "Warum Klienten mit ihr arbeiten",
-      whyText:
-        "Weil die Kombination selten ist: professionelle Glaubwürdigkeit, ruhige Autorität, unternehmerisches Verständnis und eine Arbeitsweise, die gleichzeitig strukturiert und zutiefst menschlich ist.",
-      aviationStoryEyebrow: "Aviation & Leadership",
-      aviationStoryTitle: "Leadership beginnt dort, wo Verantwortung",
-      aviationStoryTitleHighlight: "absolut wird.",
-      aviationStoryParagraphs: [
-        "Marie Lindner ist nicht nur Unternehmerin und Coach – sie ist auch ausgebildete Pilotin. Im Cockpit zählt keine Theorie, sondern Klarheit, Präzision und die Fähigkeit, in kritischen Momenten ruhig und entschlossen zu handeln.",
-        "Diese Welt hat ihren Blick auf Führung nachhaltig geprägt: Verantwortung übernehmen, Verfahren beherrschen, unter Druck klar kommunizieren und auch dann Orientierung geben, wenn nicht alle Variablen kontrollierbar sind.",
-      ],
-      aviationStoryPoints: [
-        "Entscheidungen unter Unsicherheit",
-        "Verantwortung in Momenten mit hohem Druck",
-        "Absolute Konzentration und disziplinierte Vorbereitung",
-        "Vertrauen in Systeme, Standards und das eigene Urteil",
-      ],
-      aviationStoryClosing:
-        "Genau diese Erfahrung prägt ihren Coaching-Ansatz bis heute – klar, ruhig, strukturiert und handlungsorientiert.",
-    },
-    timeline: {
-      eyebrow: "Beruflicher Weg",
-      title: "Ein Weg, geprägt durch",
-      titleHighlight: "Verantwortung, Wachstum und Bandbreite.",
-      intro:
-        "Maries Arbeit steht heute auf mehreren Säulen: unternehmerische Praxis, Führungsverantwortung, Coaching-Entwicklung und ein Aviation-Hintergrund, der Klarheit, Disziplin und Urteilsfähigkeit geprägt hat.",
+        "Die Bilder dieser Seite stehen nicht für Inszenierung, sondern für Herkunft, Erfahrung und den Anspruch, Verantwortung mit Ruhe, Substanz und Präsenz zu verbinden.",
       items: [
         {
-          period: "Unternehmerisches Fundament",
-          title: "Startup-Aufbau, operative Verantwortung und Führungspraxis",
-          description:
-            "Marie war intensiv am Aufbau und an der Mitführung eines Startup-Umfelds beteiligt und sammelte praktische Erfahrung in Management, Organisation, strategischer Planung, Kommunikation und Umsetzung.",
+          title: "Clarity in conversation",
+          text: "Vertrauen entsteht dort, wo Menschen sich verstanden fühlen und Führung gleichzeitig klar bleibt.",
         },
         {
-          period: "Coaching-Entwicklung",
-          title: "Professionelle Coaching-Ausrichtung mit Leadership-Fokus",
-          description:
-            "Parallel zur unternehmerischen Arbeit vertiefte sie ihre Coaching-Expertise in Führung, Kommunikation, Resilienz und persönlicher Entwicklung – und prägte damit die methodische Seite ihrer Arbeit heute.",
+          title: "Discipline under pressure",
+          text: "Die Aviation-Perspektive hat Standards für Präzision, Vorbereitung und Entscheidungssicherheit gesetzt.",
         },
         {
-          period: "Aviation-Hintergrund",
-          title: "Verkehrspilotinnen-Ausbildung in Australien",
-          description:
-            "Ihr Diploma in Applied Science – Aviation und die Commercial Pilot License verlangten Konzentration, Verantwortung, prozedurale Disziplin und Entscheidungssicherheit unter Druck.",
-        },
-        {
-          period: "Heute",
-          title: "Coaching, Mentoring und ausgewählte internationale Beratungsmandate",
-          description:
-            "Heute begleitet Marie Unternehmer, Führungskräfte und ambitionierte Persönlichkeiten durch Coaching und Mentoring und unterstützt daneben selektiv projektbasierte internationale Mandate.",
+          title: "Entrepreneurial presence",
+          text: "Professionelles Auftreten und persönliche Glaubwürdigkeit sind gerade im internationalen Geschäft eng miteinander verbunden.",
         },
       ],
     },
     socialProof: {
       eyebrow: "Referenzen & Außenperspektiven",
       title: "Vertrauen entsteht durch",
-      titleHighlight: "Wirkung, nicht Lautstärke.",
+      highlight: "Wirkung, nicht Lautstärke.",
       intro:
-        "Die Arbeit von Marie wird als klar, geerdet, vertrauensvoll und wirksam erlebt – besonders in Situationen, in denen Verantwortung, Übergänge oder hoher Druck den Rahmen bestimmen.",
+        "Die Arbeit von Marie wird als klar, geerdet, vertrauensvoll und wirksam erlebt – besonders dort, wo internationale Zusammenarbeit, Verantwortung und kulturelle Sensibilität zusammenkommen.",
       testimonials: [
         {
           quote:
@@ -451,20 +346,18 @@ const translations: Record<Language, Translations> = {
       ],
       featuredInterview: "Interview-Feature",
       featuredInterviewTitle: "Interview mit Nina Vélez-Troya Anquela",
-      featuredInterviewText: "Direkter Link zum veröffentlichten Interview, auf das Marie verweist.",
+      featuredInterviewText: "Direkter Link zum bestehenden veröffentlichten Interview, auf das Marie verweist.",
       featuredInterviewCta: "Feature öffnen",
       editorialFeature: "Editorial Feature",
       editorialFeatureTitle: "Marie Lindner — A Self-Made Leader",
-      editorialFeatureText:
-        "Externer Artikel über Maries Geschichte, Perspektive und Führungsweg.",
-      editorialFeatureCta: "Artikel lesen",
+      editorialFeatureText: "Editorialer Hinweis auf Maries Geschichte, Perspektive und internationalen Führungsweg.",
     },
     contact: {
       eyebrow: "Kontakt & Anfragen",
-      title: "Das",
-      titleHighlight: "Gespräch starten.",
+      title: "Das Gespräch",
+      highlight: "beginnen.",
       intro:
-        "Für Coaching-, Mentoring-, Speaking- und ausgewählte Consulting-Anfragen. Marie prüft strategische Anfragen persönlich.",
+        "Für Beratungsanfragen rund um interkulturelle Zusammenarbeit, internationale Kommunikation, Workshops und ausgewählte Leadership-Themen.",
       placeholders: {
         name: "Ihr vollständiger Name",
         email: "ihr.name@unternehmen.com",
@@ -472,10 +365,10 @@ const translations: Record<Language, Translations> = {
         message: "Schildern Sie Marie kurz Ihre Situation, Ihr Ziel oder Ihr Anliegen.",
       },
       options: {
-        coaching: "Coaching & Mentoring",
-        consulting: "Consulting",
-        speaking: "Speaking",
+        consulting: "Interkulturelle Beratung",
+        leadership: "Leadership & Kommunikation",
         workshop: "Workshop / Seminar",
+        speaking: "Speaking / Vortrag",
         other: "Sonstige Anfrage",
       },
       submit: "Anfrage senden",
@@ -493,7 +386,7 @@ const translations: Record<Language, Translations> = {
     },
     thankYou: {
       title: "Nachricht",
-      titleHighlight: "erhalten.",
+      highlight: "erhalten.",
       text:
         "Vielen Dank für Ihre Nachricht. Marie prüft Anfragen persönlich. Sie können innerhalb von 24 bis 48 Stunden mit einer Rückmeldung rechnen.",
       nextSteps: "Nächste Schritte",
@@ -510,273 +403,187 @@ const translations: Record<Language, Translations> = {
     nav: {
       links: [
         { name: "Home", href: "#home" },
-        { name: "Coaching & Mentoring", href: "#coaching" },
-        { name: "Consulting", href: "#consulting" },
-        { name: "Speaking", href: "#speaking" },
-        { name: "About", href: "#about" },
+        { name: "Services", href: "#services" },
+        { name: "Value", href: "#value" },
+        { name: "Why Marie", href: "#why-marie" },
         { name: "References", href: "#references" },
         { name: "Contact", href: "#contact" },
       ],
       menuLabel: "Menu",
       languageLabel: "Language",
-      brandAriaLabel: "Marie Lindner Coaching",
+      brandAriaLabel: "Marie Lindner Consulting",
     },
     footer: {
-      tagline: "Coaching, mentoring, speaking and selected project-based international consulting.",
+      tagline: "Intercultural personal and business consulting with a clear focus on international collaboration, leadership strength and cultural competence.",
       navigation: "Navigation",
       company: "Company",
       connect: "Connect",
-      rights: "© {year} Marie Lindner Coaching. All Rights Reserved.",
-      values: "Clarity • Presence • Discipline",
+      rights: "© {year} Marie Lindner Consulting. All Rights Reserved.",
+      values: "Clarity • trust • cultural competence",
     },
     backToTop: {
       ariaLabel: "Back to top",
     },
     hero: {
-      badge: "Coaching • Mentoring • International Project Consulting",
-      titleLine1: "Clarity for leaders.",
-      titleHighlight: "Confidence in motion.",
+      badge: "Intercultural Personal and Business Consulting",
+      title: "Clarity in international",
+      highlight: "business relationships",
       intro:
-        "Marie Lindner supports entrepreneurs, executives and ambitious decision-makers in navigating complexity, strengthening leadership capability and creating real, sustainable change.",
+        "International collaboration rarely fails because of strategy. More often, it breaks down because of cultural misunderstandings between the people involved.",
       supporting:
-        "Alongside her coaching and mentoring work, she contributes to selected international consulting assignments and is currently involved in an international IT project. Her aviation background remains a defining strength: calm judgment, structure under pressure and disciplined execution.",
-      primaryCta: "Explore Coaching",
-      secondaryCta: "Request a Conversation",
+        "Different mentalities, communication styles and expectations often create friction in business, lead to inefficient processes or even cost companies customers and partnerships. This is where I come in.",
+      primaryCta: "Request consulting",
+      secondaryCta: "Learn more",
       cards: [
         {
-          title: "Coaching",
-          text: "1:1 coaching, mentoring, small-group development and executive sparring.",
+          title: "International communication",
+          text: "Clear communication and effective negotiation in demanding international settings.",
         },
         {
-          title: "Consulting",
-          text: "Project-based international work focused on clarity, coordination and execution.",
+          title: "Cultural sensitivity",
+          text: "Understanding mentalities, expectations and business etiquette across borders.",
         },
         {
-          title: "Aviation",
-          text: "Commercial pilot training informs her discipline, precision and decision-making style.",
+          title: "Practical relevance",
+          text: "Strategies that work in day-to-day business and make leadership teams more effective immediately.",
         },
       ],
+    },
+    aviation: {
+      eyebrow: "Aviation & Leadership",
+      title: "Responsibility begins where it can no longer be delegated –",
+      highlight: "and that is where clarity is built.",
+      text:
+        "The aviation experience still shapes Marie’s perspective on leadership, decisions and international collaboration: stay calm, read the situation, communicate clearly and act reliably under pressure.",
+      quote: "Leadership begins where responsibility becomes absolute.",
+    },
+    services: {
+      eyebrow: "What I offer",
+      title: "Intercultural consulting with",
+      highlight: "clear business relevance.",
+      intro:
+        "I support companies and leaders in building intercultural competence deliberately and using it strategically.",
+      serviceTitle: "Core areas of my consulting",
+      focusTitle: "An entrepreneurial perspective grounded in international reality",
+      focusItems: [
+        "International communication and negotiation",
+        "Understanding cultural differences in business interaction",
+        "Building sustainable customer and business relationships",
+        "Leading international teams",
+        "Avoiding typical intercultural conflicts",
+        "Developing practical strategies for dealing with international markets",
+      ],
+    },
+    value: {
+      eyebrow: "Your value",
+      title: "More confidence, more clarity,",
+      highlight: "more impact in international environments.",
+      intro:
+        "Through my consulting, you and your team gain confidence, speed and composure in international business situations.",
+      gainsTitle: "Through my consulting, you and your team gain",
+      gains: [
+        "Confidence in dealing with international business partners",
+        "Faster, clearer decision-making processes",
+        "Stronger customer loyalty across cultural boundaries",
+        "Fewer misunderstandings – more efficiency",
+        "A professional presence in global markets",
+      ],
+      objectiveTitle: "The goal",
+      objectiveText:
+        "Your employees are able to act independently, confidently and respectfully in international contexts while creating real value. Strengthen your intercultural competence.",
+    },
+    whyMarie: {
+      eyebrow: "Why me",
+      title: "International experience, entrepreneurial practice and",
+      highlight: "real cultural understanding.",
+      intro:
+        "I combine personal international experience with entrepreneurial practice and a perspective on collaboration that has grown from lived reality rather than theory.",
+      blocks: [
+        {
+          title: "Personal international imprint",
+          paragraphs: [
+            "At the age of 17, I emigrated from Dresden to Australia and lived there for more than a decade – first in Melbourne and later in Sydney.",
+            "Immersing myself in another culture and learning a different way of thinking and living shaped me deeply. It allows me to look at many questions from a different angle and actively contribute to solving problems.",
+          ],
+          bullets: [
+            "Training as a commercial pilot",
+            "Aviation studies completed in October 2004",
+            "Early experience of learning how to find my way in a new, specifically Australian, culture while reassessing Germany from a distance",
+          ],
+        },
+        {
+          title: "Entrepreneurial experience",
+          paragraphs: [
+            "Alongside my international background, I bring extensive experience in building and developing business relationships.",
+            "Through my own professional work, I am familiar with approaching new business partners, building trust and recognizing cultural differences while dealing with them responsibly, because professional success requires mutual understanding and respect.",
+          ],
+          bullets: [
+            "Building and leading business structures",
+            "Working with a wide range of client groups – from entrepreneurs to skilled professionals",
+            "Developing long-term customer relationships and partnerships",
+          ],
+        },
+        {
+          title: "My core competence",
+          paragraphs: [
+            "I have the sensitivity needed to place myself in different patterns of thinking and behavior, and the ability to account for cultural differences in interaction so that misunderstandings do not turn into failure.",
+            "I show you how different mentalities work, how to adapt communication deliberately, how to lead respectfully while remaining clear, and how to remain successful even in other systems.",
+          ],
+        },
+        {
+          title: "My approach",
+          paragraphs: [
+            "No abstract could, should, must or maybe — and no textbook concepts with little functional value.",
+            "Instead: practical discussion of real situations, training and mastering recurring problem areas, tailored to your company.",
+            "My goal is not short-lived knowledge, but the development of real instinct combined with capability building. That creates strong, strategically sound preparation for everyday business.",
+          ],
+        },
+      ],
+    },
+    audience: {
+      eyebrow: "Who is this relevant for?",
+      title: "For companies that want to think, act or grow",
+      highlight: "internationally.",
+      intro:
+        "This consulting is especially relevant for companies that want to shape international relationships professionally and use cultural differences as a strategic advantage.",
+      companiesTitle: "For companies that",
+      companies: [
+        "operate internationally or are expanding",
+        "work with international clients or partners",
+        "lead teams with different cultural backgrounds",
+        "want to strengthen their market position abroad",
+      ],
+      shortTitle: "In short",
+      shortText:
+        "I help you turn the value of a multinational working and business world to your advantage. When approached attentively and respectfully, cultural differences are not a risk but an opportunity — and they should be used strategically. In a competitive economic order, being better than others matters. Feel free to reach out.",
     },
     gallery: {
-      title: "A leadership profile shaped by business, aviation and international perspective.",
-      text:
-        "Experience across industries, cultures and high-responsibility environments has formed a calm, structured and decisive leadership style — focused on clarity, accountability and real impact.",
-    },
-    differentiator: {
-      eyebrow: "What sets Marie apart",
-      title: "A rare combination of",
-      titleHighlight: "leadership, presence and grounded judgment.",
+      eyebrow: "Signature moments",
+      title: "A story built from stance, clarity and",
+      highlight: "international perspective.",
       intro:
-        "Marie combines entrepreneurial experience, leadership responsibility, coaching expertise and aviation discipline into a way of working that is clear, human and highly effective.",
-      pillars: [
-        {
-          title: "Entrepreneurial Reality",
-          text: "Experience shaped by build-up, responsibility and real operational leadership rather than theory alone.",
-        },
-        {
-          title: "Calm Authority",
-          text: "Clear communication, strong presence and a structured mindset — especially in demanding situations.",
-        },
-        {
-          title: "Aviation Discipline",
-          text: "Standards of precision, focus and decision quality from a world where responsibility cannot be outsourced.",
-        },
-      ],
-      closing:
-        "The result is support that creates trust, brings orientation and moves complex situations forward.",
-    },
-    coaching: {
-      eyebrow: "Coaching & Mentoring",
-      title: "Support for people carrying",
-      titleHighlight: "real responsibility.",
-      intro:
-        "Marie works with entrepreneurs, executives and ambitious individuals in moments that require clarity, resilience, strong communication and grounded decisions.",
-      text:
-        "Her approach combines entrepreneurial experience, leadership reality and professional coaching methods. The work is structured, personal and outcome-oriented — designed to create clarity, confidence and sustainable development.",
-      cta: "Request Coaching Details",
-      offers: [
-        {
-          title: "1:1 Coaching",
-          subtitle: "Individual support for leaders and decision-makers",
-          text: "Highly focused coaching for leadership clarity, decision-making, role definition, communication and personal effectiveness — online or in person.",
-        },
-        {
-          title: "Group Programs",
-          subtitle: "Development in a small-group environment",
-          text: "Curated small-group formats designed for reflection, growth and exchange around resilience, confidence, self-leadership and executive presence.",
-        },
-        {
-          title: "Workshops & Seminars",
-          subtitle: "Targeted sessions for teams, networks and organizations",
-          text: "Compact, high-value workshop formats on leadership, communication, mental strength and change — ideal for companies, communities and events.",
-        },
-        {
-          title: "Exclusive Retreats",
-          subtitle: "Immersive development formats in Europe",
-          text: "Selected retreat concepts for deeper transformation and strategic clarity in inspiring settings such as Mallorca or Lake Constance.",
-        },
-      ],
-      coreFocusEyebrow: "Core Focus",
-      coreFocusTitle: "Leadership, decisions and sustainable change.",
-      coreFocusText:
-        "Whether the challenge is executive pressure, a strategic transition, a communication issue, or the need for stronger self-leadership, the work centers on one thing: helping people move forward with clarity and integrity.",
-      typicalClients: "Typical Clients",
-      clientList: [
-        "Entrepreneurs",
-        "Executives",
-        "Managers",
-        "Founders",
-        "Ambitious individuals in transition",
-      ],
-    },
-    consulting: {
-      eyebrow: "Consulting",
-      titleLine1: "Selected international work —",
-      titleHighlight: "project-based and precise.",
-      intro:
-        "In addition to coaching and mentoring, Marie Lindner takes on selected consulting assignments with an international orientation. This work is positioned clearly as project-based, confidential and execution focused.",
-      currentEngagement: "Current Engagement",
-      currentEngagementText:
-        "Marie is currently involved in an international IT project. Details remain confidential, but the work reflects the kind of high-responsibility, cross-functional, international assignments she selectively supports.",
-      cta: "Inquire About Consulting",
-      areas: [
-        {
-          title: "Project-Based Consulting",
-          description:
-            "Marie contributes to selected consulting assignments where structure, coordination, communication and disciplined delivery are essential.",
-        },
-        {
-          title: "International Scope",
-          description:
-            "Her consulting work is positioned internationally and undertaken on a project basis, with discretion and clarity around scope and responsibilities.",
-        },
-        {
-          title: "Executive Collaboration",
-          description:
-            "She supports founders, leadership teams and stakeholders in aligning priorities, improving execution and moving projects forward with confidence.",
-        },
-      ],
-    },
-    speaking: {
-      eyebrow: "Speaking",
-      title: "Keynotes that combine",
-      titleHighlight: "substance and presence.",
-      intro:
-        "Speaking is part of Marie’s work — especially where leadership, responsibility, communication and decision-making meet. Her sessions are thoughtful, clear and grounded in real-world experience.",
-      cta: "Inquire for Speaking",
-      keynotes: [
-        {
-          title: "Leadership Under Pressure",
-          subtitle: "Decision quality, calm communication and responsible action",
-          outcomes: [
-            "How leaders regain clarity when complexity increases",
-            "Decision-making under pressure without losing composure",
-            "What aviation discipline teaches about leadership responsibility",
-          ],
-        },
-        {
-          title: "Executive Presence & Communication",
-          subtitle: "Confidence, clarity and authentic authority",
-          outcomes: [
-            "How leaders strengthen presence without forcing it",
-            "Structured communication in sensitive situations",
-            "Building trust through clarity, calm and consistency",
-          ],
-        },
-        {
-          title: "Change, Resilience & Self-Leadership",
-          subtitle: "Navigating transition with structure and focus",
-          outcomes: [
-            "Maintaining direction in uncertain phases",
-            "Strengthening resilience and internal stability",
-            "Turning reflection into concrete next steps",
-          ],
-        },
-      ],
-    },
-    about: {
-      eyebrow: "About Marie Lindner",
-      titleLine1: "Entrepreneurial experience.",
-      titleHighlight: "Human clarity.",
-      paragraphs: [
-        "Marie Lindner combines practical entrepreneurial experience with leadership responsibility, structured coaching work and an aviation background that shaped her standards early on.",
-        "As part of building and helping lead a startup, she gained hands-on experience in management, organization, strategic thinking, execution and communication. That work created a deep understanding of how leaders actually operate under pressure — and where they often need clarity most.",
-        "Today, she supports entrepreneurs, executives and ambitious individuals who want stronger decision quality, greater self-leadership, clearer communication and more grounded effectiveness.",
-      ],
-      pilotLabel: "Commercial Pilot License (CPL)",
-      perspectiveLabel: "International Perspective",
-      highlightsTitle: "Professional Highlights",
-      highlights: [
-        "Founder & Managing Director of Marie Lindner Coaching",
-        "Entrepreneurial experience through startup build-up, management and leadership responsibility",
-        "Commercial Pilot License (CPL) and aviation training in Australia",
-        "Leadership, communication and decision-making under pressure",
-        "Professional coaching training with leadership focus",
-        "International background with English and German fluency",
-        "Strong network across entrepreneurs, executives and business communities",
-        "Structured, high-trust work with leaders in transition and responsibility-heavy roles",
-      ],
-      foundationTitle: "Coaching Foundation",
-      foundationText:
-        "Marie’s work is informed by leadership-focused coaching training, communication psychology, personal development and resilience-oriented methods — always combined with real-world business perspective.",
-      whyTitle: "Why clients work with her",
-      whyText:
-        "Because the combination is unusual: professional credibility, calm authority, entrepreneurial understanding and a way of working that is both structured and deeply human.",
-      aviationStoryEyebrow: "Aviation & Leadership",
-      aviationStoryTitle: "Leadership begins where responsibility becomes",
-      aviationStoryTitleHighlight: "absolute.",
-      aviationStoryParagraphs: [
-        "Marie Lindner is not only an entrepreneur and coach — she is also a trained pilot. In the cockpit, theory alone is not enough. Clarity, precision and calm decision-making under pressure are what matter.",
-        "That environment shaped her understanding of leadership in a lasting way: taking responsibility, mastering procedures, communicating clearly under pressure and creating orientation even when not every variable can be controlled.",
-      ],
-      aviationStoryPoints: [
-        "Decisions under uncertainty",
-        "Responsibility in high-pressure moments",
-        "Absolute focus and disciplined preparation",
-        "Trust in systems, standards and personal judgment",
-      ],
-      aviationStoryClosing:
-        "These experiences continue to shape her coaching approach today — clear, calm, structured and action-oriented.",
-    },
-    timeline: {
-      eyebrow: "Professional Story",
-      title: "A path built through",
-      titleHighlight: "responsibility, growth and range.",
-      intro:
-        "Marie’s work today stands on several foundations: entrepreneurial practice, leadership responsibility, coaching development and an aviation background that shaped her standards for clarity, discipline and sound judgment.",
+        "The imagery on this site is not about styling. It represents background, experience and the intention to combine responsibility with calm, substance and presence.",
       items: [
         {
-          period: "Entrepreneurial Foundation",
-          title: "Startup build-up, operational responsibility and leadership practice",
-          description:
-            "Marie was deeply involved in building and helping lead a startup environment, gaining practical experience across management, organization, strategic planning, communication and execution.",
+          title: "Clarity in conversation",
+          text: "Trust grows where people feel understood and leadership still remains clear.",
         },
         {
-          period: "Coaching Development",
-          title: "Professional coaching direction with leadership focus",
-          description:
-            "Alongside entrepreneurial work, she deepened her coaching expertise in leadership, communication, resilience and personal development — shaping the methodical side of her work today.",
+          title: "Discipline under pressure",
+          text: "The aviation perspective established lasting standards for precision, preparation and decision quality.",
         },
         {
-          period: "Aviation Background",
-          title: "Commercial pilot training in Australia",
-          description:
-            "Her Diploma in Applied Science – Aviation and Commercial Pilot License required concentration, responsibility, procedural discipline and decision certainty under pressure.",
-        },
-        {
-          period: "Today",
-          title: "Coaching, mentoring and selected international consulting work",
-          description:
-            "Today, Marie supports entrepreneurs, executives and ambitious individuals through coaching and mentoring, while also contributing to selected project-based international assignments.",
+          title: "Entrepreneurial presence",
+          text: "Professional presence and personal credibility are closely linked in international business.",
         },
       ],
     },
     socialProof: {
-      eyebrow: "References & Outside Perspective",
+      eyebrow: "References & outside perspective",
       title: "Trust is built through",
-      titleHighlight: "impact, not noise.",
+      highlight: "impact, not volume.",
       intro:
-        "Marie’s work is experienced as clear, grounded, trustworthy and effective — especially in situations shaped by responsibility, transition and pressure.",
+        "Marie’s work is experienced as clear, grounded, trustworthy and effective — especially where international collaboration, responsibility and cultural sensitivity meet.",
       testimonials: [
         {
           quote:
@@ -791,22 +598,20 @@ const translations: Record<Language, Translations> = {
           role: "External perspective",
         },
       ],
-      featuredInterview: "Featured Interview",
+      featuredInterview: "Featured interview",
       featuredInterviewTitle: "Interview with Nina Vélez-Troya Anquela",
-      featuredInterviewText: "Direct link to the published interview feature referenced by Marie.",
-      featuredInterviewCta: "Open Feature",
-      editorialFeature: "Editorial Feature",
+      featuredInterviewText: "Direct link to the existing published interview feature referenced by Marie.",
+      featuredInterviewCta: "Open feature",
+      editorialFeature: "Editorial feature",
       editorialFeatureTitle: "Marie Lindner — A Self-Made Leader",
-      editorialFeatureText:
-        "External article spotlighting Marie’s story, perspective and leadership journey.",
-      editorialFeatureCta: "Read Article",
+      editorialFeatureText: "Editorial note highlighting Marie’s story, perspective and international leadership path.",
     },
     contact: {
-      eyebrow: "Contact & Inquiries",
+      eyebrow: "Contact & inquiries",
       title: "Start the",
-      titleHighlight: "conversation.",
+      highlight: "conversation.",
       intro:
-        "For coaching, mentoring, speaking and selected consulting inquiries. Marie personally reviews strategic requests.",
+        "For consulting inquiries around intercultural collaboration, international communication, workshops and selected leadership topics.",
       placeholders: {
         name: "Your full name",
         email: "your.name@company.com",
@@ -814,13 +619,13 @@ const translations: Record<Language, Translations> = {
         message: "Tell Marie a little about your situation, goals or request.",
       },
       options: {
-        coaching: "Coaching & Mentoring",
-        consulting: "Consulting",
-        speaking: "Speaking",
-        workshop: "Workshop / Seminar",
-        other: "Other Inquiry",
+        consulting: "Intercultural consulting",
+        leadership: "Leadership & communication",
+        workshop: "Workshop / seminar",
+        speaking: "Speaking / keynote",
+        other: "Other inquiry",
       },
-      submit: "Send Inquiry",
+      submit: "Send inquiry",
       helper:
         "The form opens your email app with a prefilled message. If preferred, you can also contact Marie directly via email or WhatsApp.",
       mailSubjectPrefix: "Inquiry",
@@ -835,17 +640,16 @@ const translations: Record<Language, Translations> = {
     },
     thankYou: {
       title: "Message",
-      titleHighlight: "received.",
-      text:
-        "Thank you for reaching out. Marie personally reviews inquiries. You can expect a response within 24–48 hours.",
-      nextSteps: "Next Steps",
+      highlight: "received.",
+      text: "Thank you for reaching out. Marie personally reviews inquiries. You can expect a response within 24 to 48 hours.",
+      nextSteps: "Next steps",
       nextStepsList: [
         "Review of your inquiry",
         "Assessment of fit and priorities",
-        "Reply with suggested next step",
+        "Reply with a suitable next step",
       ],
-      directContact: "Direct Contact",
-      backHome: "Back to Home",
+      directContact: "Direct contact",
+      backHome: "Back to home",
     },
   },
 };
@@ -853,7 +657,7 @@ const translations: Record<Language, Translations> = {
 type LanguageContextValue = {
   language: Language;
   setLanguage: (language: Language) => void;
-  t: Translations;
+  t: TranslationShape;
 };
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
@@ -870,10 +674,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = language;
   }, [language]);
 
-  const value = useMemo(
-    () => ({ language, setLanguage, t: translations[language] }),
-    [language]
-  );
+  const value = useMemo(() => ({ language, setLanguage, t: translations[language] }), [language]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

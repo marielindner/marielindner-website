@@ -7,15 +7,11 @@ import { useLanguage, type Language } from "../i18n";
 function LanguageToggle({ mobile = false }: { mobile?: boolean }) {
   const { language, setLanguage, t } = useLanguage();
 
-  const baseClass = mobile
-    ? "language-toggle w-full justify-center"
-    : "language-toggle hidden md:inline-flex";
+  const baseClass = mobile ? "language-toggle w-full justify-center" : "language-toggle hidden md:inline-flex";
 
   const getButtonClass = (value: Language) =>
     `language-toggle-button ${
-      language === value
-        ? "bg-gold-champagne text-obsidian shadow-lg"
-        : "text-steel hover:text-pearl"
+      language === value ? "bg-gold-champagne text-obsidian shadow-lg" : "text-steel hover:text-pearl"
     }`;
 
   return (
@@ -38,7 +34,7 @@ export default function Navbar() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
@@ -50,18 +46,6 @@ export default function Navbar() {
     if (isHome && href.startsWith("#")) {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  const handleLogoClick = () => {
-    setIsOpen(false);
-
-    if (isHome) {
-      const el = document.querySelector("#home");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      else window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -79,7 +63,8 @@ export default function Navbar() {
           onClick={(e) => {
             if (isHome) {
               e.preventDefault();
-              handleLogoClick();
+              const el = document.querySelector("#home");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
             }
           }}
           className="group flex items-center gap-3"
@@ -87,7 +72,7 @@ export default function Navbar() {
         >
           <img
             src="/images/logo-ml-consulting.webp"
-            alt="Marie Lindner Coaching"
+            alt="Marie Lindner Consulting"
             className="h-10 w-auto object-contain md:h-11"
             loading="eager"
             decoding="async"
@@ -97,7 +82,7 @@ export default function Navbar() {
             <div className="text-base font-serif italic text-pearl transition-colors group-hover:text-gold-champagne md:text-lg">
               Marie Lindner
             </div>
-            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Coaching</div>
+            <div className="text-[10px] uppercase tracking-[0.32em] text-steel/70">Consulting</div>
           </div>
         </Link>
 
