@@ -58,6 +58,10 @@ type TranslationShape = {
     intro: string;
     gainsTitle: string;
     gains: string[];
+    projectTitle: string;
+    projectText: string;
+    businessTitle: string;
+    businessText: string;
     objectiveTitle: string;
     objectiveText: string;
   };
@@ -160,7 +164,8 @@ const translations: Record<Language, TranslationShape> = {
       brandAriaLabel: "Marie Lindner Consulting",
     },
     footer: {
-      tagline: "Interkulturelle Persönlichkeits- und Unternehmensberatung mit klarem Fokus auf internationale Zusammenarbeit, Führungsstärke und kulturelle Kompetenz.",
+      tagline:
+        "Interkulturelle Persönlichkeits- und Unternehmensberatung mit klarem Fokus auf internationale Zusammenarbeit, Führungsstärke und kulturelle Kompetenz.",
       navigation: "Navigation",
       company: "Unternehmen",
       connect: "Kontakt",
@@ -221,22 +226,28 @@ const translations: Record<Language, TranslationShape> = {
       ],
     },
     value: {
-      eyebrow: "Ihr Mehrwert",
-      title: "Mehr Sicherheit, mehr Klarheit,",
-      highlight: "mehr Wirkung im internationalen Umfeld.",
+      eyebrow: "Projekt- und Business-Kontext",
+      title: "Strategische Umsetzung mit",
+      highlight: "unternehmerischer Substanz.",
       intro:
-        "Durch meine Beratung gewinnen Sie und Ihr Team Sicherheit, Geschwindigkeit und Souveränität in internationalen Geschäftssituationen.",
-      gainsTitle: "Durch meine Beratung gewinnen Sie und Ihr Team",
+        "Neben der interkulturellen Beratung bringt Marie operative und strategische Erfahrung in Projektführung, Plattformlogik und unternehmerischer Weiterentwicklung mit.",
+      gainsTitle: "Was diese Erfahrung in Projekte einbringt",
       gains: [
-        "Sicherheit im Umgang mit internationalen Geschäftspartnern",
-        "Schnellere, klarere Entscheidungsprozesse",
-        "Stärkere Kundenbindung über kulturelle Grenzen hinweg",
-        "Weniger Missverständnisse – mehr Effizienz",
-        "Professionelles Auftreten in globalen Märkten",
+        "Klare Strukturierung komplexer Vorhaben",
+        "Verbindung von Business-Zielen, Nutzererlebnis und technischer Umsetzung",
+        "Priorisierung mit Blick auf Marktfähigkeit und Skalierbarkeit",
+        "Schnittstellenstärke zwischen Business, Technologie und externen Partnern",
+        "Unternehmerisches Denken mit operativer Umsetzungsnähe",
       ],
-      objectiveTitle: "Das Ziel",
+      projectTitle: "Projektleitung – Internationales IT-Projekt",
+      projectText:
+        "Aktuell leite und gestalte ich ein internationales IT-Projekt zum Aufbau einer digitalen Netzwerkplattform für Unternehmer und Entscheidungsträger. In meiner Rolle verantworte ich insbesondere die konzeptionelle Entwicklung und strategische Ausrichtung des Projekts: Ich übersetze die übergeordnete Vision in klare Strukturen, definiere Use Cases und Nutzerführung und arbeite eng mit den technischen Partnern an der Umsetzung. Konkret bedeutet das: Ich strukturiere die Plattformlogik, zum Beispiel Matching-Prozesse, Nutzerführung und Interaktionsmodelle, priorisiere Funktionen, begleite die Entwicklungsschritte und stelle sicher, dass Business-Ziele, Nutzererlebnis und technische Umsetzung ineinandergreifen. Dabei agiere ich als zentrale Schnittstelle zwischen Business, Technologie und Partnern, mit dem Fokus, aus einer Idee ein skalierbares, marktfähiges Produkt zu entwickeln.",
+      businessTitle: "Unternehmerische Erfahrung & Business-Kontext",
+      businessText:
+        "In den letzten vier Jahren habe ich maßgeblich am Aufbau eines Start-ups im Golfsektor mitgewirkt. Ich war dabei operativ wie strategisch eingebunden – von Tagesgeschäft, Buchhaltung und Personalführung bis hin zu unternehmerischen Entscheidungen und der Weiterentwicklung des Geschäftsmodells. Zudem habe ich zentrale Projekte begleitet und mitgeführt, darunter die Digitalisierung von Prozessen, der Aufbau einer Golfreiseagentur als neues Geschäftsfeld, die Strukturierung und Begleitung von Förderprozessen sowie die Initiierung und Umsetzung interner Projekte zur Weiterentwicklung des Unternehmens. Diese Erfahrung ermöglicht mir heute, Projekte nicht nur strategisch zu denken, sondern sie auch operativ wirksam umzusetzen.",
+      objectiveTitle: "Das Ergebnis",
       objectiveText:
-        "Ihre Mitarbeiter sind in der Lage, selbstständig, souverän und respektvoll in internationalen Kontexten zu agieren – und dabei Mehrwerte zu schaffen. Steigern Sie Ihre interkulturelle Kompetenz.",
+        "So entsteht ein Beratungsansatz, der nicht bei Konzepten stehen bleibt, sondern internationale Zusammenarbeit, Projektlogik und unternehmerische Realität zusammenführt.",
     },
     whyMarie: {
       eyebrow: "Warum ich",
@@ -339,18 +350,20 @@ const translations: Record<Language, TranslationShape> = {
         },
         {
           quote:
-            "Sie arbeitet strukturiert, präsent und mit einem sehr klaren Gefühl für Verantwortung. Genau diese Kombination macht sie in anspruchsvollen Situationen so wertvoll.",
-          author: "Projekt- und Business-Kontext",
-          role: "Externe Perspektive",
+            "Marie Lindner zeichnet sich in all ihren Tätigkeiten durch ein aussergewöhnlich hohes Mass an Professionalität aus. Sie kommuniziert klar und wirkungsvoll und überzeugt durch eine sehr präzise Ausdrucksweise sowie ein hohes Bildungsniveau. Ihre Intelligenz und ihr Weitblick sind deutlich erkennbar und machen sie in jedem beruflichen Umfeld zu einer herausragenden Persönlichkeit. Marie ist jederzeit bereit, andere zu unterstützen, und sucht aktiv nach konstruktiven und positiven Lösungen. Ihre Entscheidungen zeugen von Reife; sie analysiert Situationen sorgfältig und handelt überlegt. Dadurch sind ihre Entscheidungen fundiert und ausgewogen. Gleichzeitig begegnet sie jeder Situation mit einer offenen, freundlichen und positiven Haltung. Diese Einstellung schafft ein vertrauensvolles und kooperatives Umfeld und macht die Zusammenarbeit mit ihr besonders angenehm. Aufgrund ihrer Professionalität, ihres Weitblicks und ihrer positiven Grundhaltung kann ich Frau Lindner uneingeschränkt für jedes Projekt empfehlen. Sie ist für jedes Team und jede Initiative eine klare Bereicherung.",
+          author: "Douglas Alexander",
+          role: "Alexander Hospitality / Alexander by Design, New York",
         },
       ],
       featuredInterview: "Interview-Feature",
       featuredInterviewTitle: "Interview mit Nina Vélez-Troya Anquela",
-      featuredInterviewText: "Direkter Link zum bestehenden veröffentlichten Interview, auf das Marie verweist.",
+      featuredInterviewText:
+        "Direkter Link zum bestehenden veröffentlichten Interview, auf das Marie verweist.",
       featuredInterviewCta: "Feature öffnen",
       editorialFeature: "Editorial Feature",
       editorialFeatureTitle: "Marie Lindner — A Self-Made Leader",
-      editorialFeatureText: "Editorialer Hinweis auf Maries Geschichte, Perspektive und internationalen Führungsweg.",
+      editorialFeatureText:
+        "Editorialer Hinweis auf Maries Geschichte, Perspektive und internationalen Führungsweg.",
     },
     contact: {
       eyebrow: "Kontakt & Anfragen",
@@ -414,7 +427,8 @@ const translations: Record<Language, TranslationShape> = {
       brandAriaLabel: "Marie Lindner Consulting",
     },
     footer: {
-      tagline: "Intercultural personal and business consulting with a clear focus on international collaboration, leadership strength and cultural competence.",
+      tagline:
+        "Intercultural personal and business consulting with a clear focus on international collaboration, leadership strength and cultural competence.",
       navigation: "Navigation",
       company: "Company",
       connect: "Connect",
@@ -475,22 +489,28 @@ const translations: Record<Language, TranslationShape> = {
       ],
     },
     value: {
-      eyebrow: "Your value",
-      title: "More confidence, more clarity,",
-      highlight: "more impact in international environments.",
+      eyebrow: "Project & business context",
+      title: "Strategic execution with",
+      highlight: "entrepreneurial substance.",
       intro:
-        "Through my consulting, you and your team gain confidence, speed and composure in international business situations.",
-      gainsTitle: "Through my consulting, you and your team gain",
+        "Alongside her intercultural consulting work, Marie brings operational and strategic experience in project leadership, platform logic and business development.",
+      gainsTitle: "What this background contributes to projects",
       gains: [
-        "Confidence in dealing with international business partners",
-        "Faster, clearer decision-making processes",
-        "Stronger customer loyalty across cultural boundaries",
-        "Fewer misunderstandings – more efficiency",
-        "A professional presence in global markets",
+        "Clear structuring of complex initiatives",
+        "Alignment of business goals, user experience and technical delivery",
+        "Prioritization with market readiness and scalability in mind",
+        "Strong interface management between business, technology and external partners",
+        "Entrepreneurial thinking combined with hands-on execution",
       ],
-      objectiveTitle: "The goal",
+      projectTitle: "Project Leadership – International IT Project",
+      projectText:
+        "Marie is currently leading and shaping an international IT project focused on building a digital networking platform for entrepreneurs and decision-makers. In this role, she is responsible in particular for the conceptual development and strategic direction of the project: translating the overarching vision into clear structures, defining use cases and user journeys, and working closely with technical partners on implementation. In practical terms, this means structuring the platform logic, including matching processes, user guidance and interaction models, prioritizing features, supporting development steps and ensuring that business goals, user experience and technical implementation work together. She acts as a central interface between business, technology and partners, with a clear focus on developing a scalable, market-ready product from an initial idea.",
+      businessTitle: "Entrepreneurial Experience & Business Context",
+      businessText:
+        "Over the past four years, Marie has played a key role in building a start-up in the golf sector. She has been involved both operationally and strategically — from day-to-day business, accounting and people coordination to entrepreneurial decisions and the continued development of the business model. She has also supported and co-led core initiatives, including process digitization, the development of a golf travel agency as a new business field, the structuring and support of funding processes, and the initiation and implementation of internal projects to further develop the company. This experience allows her today to think strategically about projects and translate them into effective operational execution.",
+      objectiveTitle: "The outcome",
       objectiveText:
-        "Your employees are able to act independently, confidently and respectfully in international contexts while creating real value. Strengthen your intercultural competence.",
+        "The result is an advisory profile that does not stop at concepts, but connects international collaboration, project logic and entrepreneurial reality.",
     },
     whyMarie: {
       eyebrow: "Why me",
@@ -593,18 +613,20 @@ const translations: Record<Language, TranslationShape> = {
         },
         {
           quote:
-            "She works in a structured way, with presence and a very clear sense of responsibility. That exact combination makes her so valuable in demanding situations.",
-          author: "Project & business context",
-          role: "External perspective",
+            "Marie Lindner consistently demonstrates exceptional professionalism in all her endeavors. She communicates clearly and effectively, showing a high level of articulation and education. Her intelligence and insight are evident, making her a standout in any professional setting. Marie is always eager to assist others and actively seeks out positive solutions. Her decision-making reflects maturity, and she thoughtfully processes information before taking action. This careful consideration ensures that her choices are well-informed and balanced. Marie approaches every situation with a friendly and upbeat demeanor. Her attitude fosters a collaborative and supportive environment, making her a pleasure to work with. Based on her professionalism, insight, and positive approach, I highly recommend Ms. Lindner for any project she wishes to pursue. She would be an asset to any team or initiative.",
+          author: "Douglas Alexander",
+          role: "Alexander Hospitality / Alexander by Design, New York",
         },
       ],
       featuredInterview: "Featured interview",
       featuredInterviewTitle: "Interview with Nina Vélez-Troya Anquela",
-      featuredInterviewText: "Direct link to the existing published interview feature referenced by Marie.",
+      featuredInterviewText:
+        "Direct link to the existing published interview feature referenced by Marie.",
       featuredInterviewCta: "Open feature",
       editorialFeature: "Editorial feature",
       editorialFeatureTitle: "Marie Lindner — A Self-Made Leader",
-      editorialFeatureText: "Editorial note highlighting Marie’s story, perspective and international leadership path.",
+      editorialFeatureText:
+        "Editorial note highlighting Marie’s story, perspective and international leadership path.",
     },
     contact: {
       eyebrow: "Contact & inquiries",
@@ -641,7 +663,8 @@ const translations: Record<Language, TranslationShape> = {
     thankYou: {
       title: "Message",
       highlight: "received.",
-      text: "Thank you for reaching out. Marie personally reviews inquiries. You can expect a response within 24 to 48 hours.",
+      text:
+        "Thank you for reaching out. Marie personally reviews inquiries. You can expect a response within 24 to 48 hours.",
       nextSteps: "Next steps",
       nextStepsList: [
         "Review of your inquiry",

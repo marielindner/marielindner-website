@@ -13,7 +13,6 @@ import {
 import { useLanguage } from "../i18n";
 import emailjs from "@emailjs/browser";
 
-// 👉 TEST EMAIL (wichtig: nach Test wieder auf Marie ändern!)
 const TO_EMAIL = "marielindnerconsulting@gmail.com";
 
 export default function ContactForm() {
@@ -37,9 +36,7 @@ export default function ContactForm() {
   }, [language, t.contact.options.consulting]);
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -93,10 +90,7 @@ export default function ContactForm() {
             </span>
 
             <h2 className="heading-serif mb-8 text-4xl text-balance md:text-6xl">
-              {t.contact.title}{" "}
-              <span className="text-gold-champagne">
-                {t.contact.titleHighlight}
-              </span>
+              {t.contact.title} <span className="text-gold-champagne">{t.contact.highlight}</span>
             </h2>
 
             <p className="mb-10 max-w-xl text-lg font-light leading-relaxed text-steel">
@@ -105,9 +99,9 @@ export default function ContactForm() {
 
             <div className="mb-10 overflow-hidden rounded-[2rem] border border-gold-champagne/12">
               <img
-                src="/images/hero-marie.webp"
+                src="/images/rotes-jacket-marie1.webp"
                 alt="Marie Lindner portrait"
-                className="h-[340px] w-full object-cover"
+                className="h-[340px] w-full object-cover object-[center_18%]"
                 loading="lazy"
               />
             </div>
@@ -118,9 +112,7 @@ export default function ContactForm() {
                 className="flex items-center gap-3 text-pearl transition-colors hover:text-gold-champagne"
               >
                 <Mail size={18} className="text-gold-champagne" />
-                <span className="text-sm">
-                  marielindnerconsulting@gmail.com
-                </span>
+                <span className="text-sm">marielindnerconsulting@gmail.com</span>
               </a>
 
               <a
@@ -207,21 +199,11 @@ export default function ContactForm() {
                   onChange={handleChange}
                   className="input-field cursor-pointer"
                 >
-                  <option value={t.contact.options.coaching}>
-                    {t.contact.options.coaching}
-                  </option>
-                  <option value={t.contact.options.consulting}>
-                    {t.contact.options.consulting}
-                  </option>
-                  <option value={t.contact.options.speaking}>
-                    {t.contact.options.speaking}
-                  </option>
-                  <option value={t.contact.options.workshop}>
-                    {t.contact.options.workshop}
-                  </option>
-                  <option value={t.contact.options.other}>
-                    {t.contact.options.other}
-                  </option>
+                  <option value={t.contact.options.consulting}>{t.contact.options.consulting}</option>
+                  <option value={t.contact.options.leadership}>{t.contact.options.leadership}</option>
+                  <option value={t.contact.options.speaking}>{t.contact.options.speaking}</option>
+                  <option value={t.contact.options.workshop}>{t.contact.options.workshop}</option>
+                  <option value={t.contact.options.other}>{t.contact.options.other}</option>
                 </select>
               </div>
 
@@ -260,4 +242,3 @@ export default function ContactForm() {
     </section>
   );
 }
-

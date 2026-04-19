@@ -22,11 +22,11 @@ export default function Hero() {
           className="max-w-xl py-8 lg:py-0"
         >
           <div className="mb-7 flex items-center gap-4">
-            <div className="rounded-xl border border-gold-champagne/20 bg-obsidian/40 px-3 py-2 shadow-lg shadow-gold-champagne/10 backdrop-blur-sm">
+            <div className="rounded-2xl border border-gold-champagne/20 bg-obsidian/50 px-4 py-3 shadow-lg shadow-gold-champagne/10 backdrop-blur-sm md:px-5 md:py-4">
               <img
                 src="/images/logo-ml-consulting.webp"
                 alt="Marie Lindner Consulting"
-                className="h-8 w-auto object-contain md:h-9"
+                className="h-12 w-auto object-contain md:h-14 xl:h-16"
                 loading="eager"
                 decoding="async"
               />
@@ -66,6 +66,7 @@ export default function Hero() {
           <div className="grid gap-4 border-t border-gold-champagne/12 pt-7 sm:grid-cols-3">
             {t.hero.cards.map((card, index) => {
               const Icon = icons[index];
+
               return (
                 <div
                   key={card.title}
@@ -95,18 +96,29 @@ export default function Hero() {
           <div className="absolute -right-6 top-10 hidden h-28 w-28 rounded-full border border-gold-champagne/18 bg-obsidian/60 backdrop-blur-sm lg:block" />
 
           <div className="relative overflow-hidden rounded-[2rem] border border-gold-champagne/15 bg-charcoal shadow-[0_30px_120px_rgba(0,0,0,0.45)]">
-            <div className="relative aspect-[4/5]">
+            <div className="relative aspect-[4/4.9] sm:aspect-[4/5]">
               <img
                 src="/images/rotes-jacket-marie2.webp"
                 alt="Marie Lindner executive portrait"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-[58%_18%] sm:object-[center_20%] lg:object-cover"
                 loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/45 via-transparent to-transparent" />
+            </div>
+
+            <div className="absolute left-4 top-4 sm:left-6 sm:top-6 lg:hidden">
+              <div className="rounded-2xl border border-gold-champagne/15 bg-obsidian/65 px-4 py-3 backdrop-blur-sm">
+                <img
+                  src="/images/logo-ml-consulting.webp"
+                  alt="Marie Lindner Consulting"
+                  className="h-10 w-auto object-contain"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
             </div>
           </div>
 
-          {/* 🔥 MOBILE = unter dem Bild | DESKTOP = Overlay */}
           <div className="relative mt-6 px-2 lg:absolute lg:bottom-6 lg:left-6 lg:right-6 lg:mt-0 lg:px-0">
             <div className="rounded-[1.5rem] border border-gold-champagne/15 bg-obsidian/60 p-5 backdrop-blur-sm lg:max-w-[22rem]">
               <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-champagne">

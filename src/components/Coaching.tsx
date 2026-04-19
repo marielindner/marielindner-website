@@ -10,7 +10,11 @@ export default function Coaching() {
       <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-gold-champagne/6 blur-[120px]" />
 
       <div className="section-container relative z-10 grid items-start gap-14 lg:grid-cols-[0.88fr_1.12fr] xl:gap-20">
-        <motion.div initial={{ opacity: 0, x: -18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+        <motion.div
+          initial={{ opacity: 0, x: -18 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
           <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
             {t.services.eyebrow}
           </span>
@@ -19,10 +23,17 @@ export default function Coaching() {
             {t.services.title} <span className="text-gold-champagne">{t.services.highlight}</span>
           </h2>
 
-          <p className="mb-7 text-base font-light leading-relaxed text-steel md:text-lg">{t.services.intro}</p>
+          <p className="mb-7 text-base font-light leading-relaxed text-steel md:text-lg">
+            {t.services.intro}
+          </p>
 
           <div className="overflow-hidden rounded-[2rem] border border-gold-champagne/15 bg-charcoal/65">
-            <img src="/images/hero-marie.webp" alt="Marie Lindner portrait" className="h-[520px] w-full object-cover" loading="lazy" />
+            <img
+              src="/images/rotes-jacket-marie1.webp"
+              alt="Marie Lindner portrait"
+              className="h-[520px] w-full object-cover object-[center_18%]"
+              loading="lazy"
+            />
           </div>
         </motion.div>
 
@@ -36,11 +47,17 @@ export default function Coaching() {
             <div className="mb-5 text-[10px] font-bold uppercase tracking-[0.34em] text-gold-champagne">
               {t.services.serviceTitle}
             </div>
+
             <div className="grid gap-4">
               {t.services.focusItems.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-2xl border border-gold-champagne/10 bg-obsidian/55 px-4 py-4">
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-2xl border border-gold-champagne/10 bg-obsidian/55 px-4 py-4"
+                >
                   <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-gold-champagne" />
-                  <span className="text-sm font-light leading-relaxed text-pearl/90 md:text-[15px]">{item}</span>
+                  <span className="text-sm font-light leading-relaxed text-pearl/90 md:text-[15px]">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>

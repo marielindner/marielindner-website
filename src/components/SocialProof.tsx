@@ -39,7 +39,7 @@ export default function SocialProof() {
             <img
               src="/images/rotes-jacket-marie2.webp"
               alt="Marie Lindner portrait"
-              className="h-[420px] w-full object-cover"
+              className="h-[420px] w-full object-cover object-[center_18%]"
               loading="lazy"
             />
           </motion.div>
@@ -48,7 +48,7 @@ export default function SocialProof() {
         <div className="grid gap-8 lg:grid-cols-2">
           {t.socialProof.testimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.quote}
+              key={`${testimonial.author}-${index}`}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -62,10 +62,10 @@ export default function SocialProof() {
               </p>
 
               <div className="border-t border-gold-champagne/10 pt-6">
-                <div className="text-xl font-serif italic text-gold-champagne">
+                <div className="text-xl font-serif italic leading-snug text-gold-champagne">
                   {testimonial.author}
                 </div>
-                <div className="mt-1 text-[10px] font-bold uppercase tracking-widest text-steel">
+                <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.22em] text-steel">
                   {testimonial.role}
                 </div>
               </div>
