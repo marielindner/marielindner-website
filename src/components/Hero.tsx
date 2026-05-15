@@ -58,8 +58,14 @@ export default function Hero() {
               {t.hero.primaryCta}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#services" className="btn-secondary">
-              {t.hero.secondaryCta}
+
+            <a
+              href="/portfolio-marie-lindner.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              {t.hero.portfolioCta}
             </a>
           </div>
 

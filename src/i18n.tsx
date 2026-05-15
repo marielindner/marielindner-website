@@ -33,6 +33,7 @@ type TranslationShape = {
     supporting: string;
     primaryCta: string;
     secondaryCta: string;
+    portfolioCta: string;
     cards: Array<{ title: string; text: string }>;
   };
   aviation: {
@@ -64,6 +65,14 @@ type TranslationShape = {
     businessText: string;
     objectiveTitle: string;
     objectiveText: string;
+  };
+  executiveSummary: {
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  text: string;
+  cta: string;
+  items: Array<{ title: string; text: string }>;
   };
   whyMarie: {
     eyebrow: string;
@@ -185,6 +194,7 @@ const translations: Record<Language, TranslationShape> = {
         "Unterschiedliche Mentalitäten, Kommunikationsstile und Erwartungen führen im Geschäftsalltag oft zu Reibung, ineffizienten Prozessen oder sogar zum Verlust von Kunden und Partnerschaften. Hier setze ich an.",
       primaryCta: "Beratung anfragen",
       secondaryCta: "Mehr erfahren",
+      portfolioCta: "Portfolio ansehen",
       cards: [
         {
           title: "Internationale Kommunikation",
@@ -200,10 +210,38 @@ const translations: Record<Language, TranslationShape> = {
         },
       ],
     },
+    
+executiveSummary: {
+  eyebrow: "Executive Overview",
+  title: "Internationale Projekte mit",
+  highlight: "klarer Umsetzung",
+  text:
+    "Marie Lindner begleitet Unternehmen bei internationalen und regionalen Projekten mit Fokus auf kulturelle Sicherheit, klare Kommunikation und messbare Resultate. Die Kombination aus operativer Umsetzungskompetenz, interkultureller Erfahrung und strategischer Begleitung schafft nachhaltige Ergebnisse.",
+  cta: "Portfolio öffnen",
+  items: [
+    {
+      title: "12 Jahre international",
+      text:
+        "Internationale Erfahrung zwischen Deutschland und Australien mit tiefem Verständnis für unterschiedliche Geschäfts- und Kommunikationskulturen.",
+    },
+    {
+      title: "Operative Projektbegleitung",
+      text:
+        "Klare Verantwortung, direkte Kommunikation und strukturierte Steuerung komplexer internationaler und regionaler Projekte.",
+    },
+    {
+      title: "Förderfähige Beratung",
+      text:
+        "Je nach Programm können Zuschüsse von bis zu 50–80 % für externe Beratungsleistungen möglich sein.",
+    },
+  ],
+},
+
+    
     aviation: {
       eyebrow: "Aviation & Leadership",
-      title: "Verantwortung beginnt dort, wo sie nicht delegiert werden kann –",
-      highlight: "und genau dort entsteht Klarheit.",
+      title: "Klarheit entsteht,",
+      highlight: "wenn du Verantwortung übernimmst",
       text:
         "Die Aviation-Erfahrung prägt den Blick auf Führung, Entscheidungen und internationale Zusammenarbeit bis heute: ruhig bleiben, Lagebilder einordnen, klar kommunizieren und unter Druck zuverlässig handeln.",
       quote: "Leadership beginnt dort, wo Verantwortung absolut wird.",
@@ -447,6 +485,7 @@ const translations: Record<Language, TranslationShape> = {
       supporting:
         "Different mentalities, communication styles and expectations often create friction in business, lead to inefficient processes or even cost companies customers and partnerships. This is where I come in.",
       primaryCta: "Request consulting",
+      portfolioCta: "View portfolio",
       secondaryCta: "Learn more",
       cards: [
         {
@@ -463,10 +502,38 @@ const translations: Record<Language, TranslationShape> = {
         },
       ],
     },
+
+executiveSummary: {
+  eyebrow: "Executive Overview",
+  title: "International projects with",
+  highlight: "clear execution",
+  text:
+    "Marie Lindner supports companies in international and regional projects with a strong focus on cultural awareness, structured communication and measurable business outcomes. Her combination of operational execution, intercultural expertise and strategic guidance creates sustainable results.",
+  cta: "Open portfolio",
+  items: [
+    {
+      title: "12 years international",
+      text:
+        "International experience across Germany and Australia with deep understanding of cross-cultural business environments.",
+    },
+    {
+      title: "Operational project leadership",
+      text:
+        "Clear accountability, direct communication and structured execution of complex international and regional initiatives.",
+    },
+    {
+      title: "Funding opportunities",
+      text:
+        "Depending on the program, companies may qualify for subsidies of up to 50–80 % for external consulting services.",
+    },
+  ],
+},
+
+
     aviation: {
       eyebrow: "Aviation & Leadership",
-      title: "Responsibility begins where it can no longer be delegated –",
-      highlight: "and that is where clarity is built.",
+      title: "Clarity emerges",
+      highlight: "when you take responsibility",
       text:
         "The aviation experience still shapes Marie’s perspective on leadership, decisions and international collaboration: stay calm, read the situation, communicate clearly and act reliably under pressure.",
       quote: "Leadership begins where responsibility becomes absolute.",

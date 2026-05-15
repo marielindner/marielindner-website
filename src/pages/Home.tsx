@@ -7,11 +7,13 @@ import About from "../components/About";
 import Speaking from "../components/Speaking";
 import SocialProof from "../components/SocialProof";
 import ContactForm from "../components/ContactForm";
+import ExecutiveSummary from "../components/ExecutiveSummary";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <ExecutiveSummary />
       <Differentiator />
       <Coaching />
       <ConsultingProjects />
